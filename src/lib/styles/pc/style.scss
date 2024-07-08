@@ -69,7 +69,7 @@ body {
     width: 97px;
     height: 94px;
     margin-top: -20px;
-    background: url(images/icon_signup.png) center no-repeat;
+    background: url(/images/icon_signup.png) center no-repeat;
 }
 
 .btn-rank {
@@ -81,7 +81,7 @@ body {
     height: 144px;
     margin-top: -50px;
     mix-blend-mode: lighten;
-    background: url(images/icon_rank.png) center no-repeat;
+    background: url(/images/icon_rank.png) center no-repeat;
 }
 
 .common-tl-sm {
@@ -91,7 +91,7 @@ body {
     margin: 0 auto;
     text-align: center;
     color: #f7eae1;
-    background: url(images/bg_tl_stars.png) top center no-repeat;
+    background: url(/images/bg_tl_stars.png) top center no-repeat;
 
     h2 {
         line-height: 70px;
@@ -124,10 +124,10 @@ body {
     color: #362e2b;
     font-size: 22px;
     font-weight: 600;
-    background: url(images/btn_light_lg.png) center no-repeat;
+    background: url(/images/btn_light_lg.png) center no-repeat;
 
     &:active {
-        background: url(images/btn_light_lg.png) center no-repeat;
+        background: url(/images/btn_light_lg.png) center no-repeat;
     }
 }
 
@@ -137,7 +137,7 @@ body {
 
 .list-body,
 .med-body {
-    background: url(images/bg_bottom_stars.jpg) center calc(100% - 150px) no-repeat #060807;
+    background: url(/images/bg_bottom_stars.jpg) center calc(100% - 150px) no-repeat #060807;
 
     .list-box {
         padding: 35px 0;
@@ -271,7 +271,7 @@ body {
             text-align: center;
             color: #330000;
             font-size: 18px;
-            background: url(images/btn_apply.png) no-repeat center top;
+            background: url(/images/btn_apply.png) no-repeat center top;
         }
     }
 }
@@ -316,7 +316,7 @@ body {
         border: 2px solid #084637;
         border-radius: 40px;
         font-size: 18px;
-        background: url(images/bg_cont_1.jpg) top center no-repeat;
+        background: url(/images/bg_cont_1.jpg) top center no-repeat;
         background-size: 100%;
         background-color: #0d231c;
     }
@@ -338,7 +338,7 @@ body {
             text-align: center;
             color: #fedcb9;
             font-size: 22px;
-            background: url(images/index_btn_rank.png) no-repeat center top;
+            background: url(/images/index_btn_rank.png) no-repeat center top;
             @include ellipsis;
         }
 
@@ -346,7 +346,7 @@ body {
             width: 289px;
             height: 115px;
             line-height: 30px;
-            background: url(./images/icon_btn_lg.png) no-repeat center top;
+            background: url(/images/icon_btn_lg.png) no-repeat center top;
             display: block;
             text-align: center;
             font-size: 24px;
@@ -459,7 +459,7 @@ body {
                     text-align: center;
                     color: #330000;
                     font-size: 18px;
-                    background: url(images/btn_vote.png) center top no-repeat;
+                    background: url(/images/btn_vote.png) center top no-repeat;
                 }
             }
         }
@@ -552,23 +552,23 @@ body {
 
     .card-box-1 {
         margin-right: 30px;
-        background: url(images/bg_cont_3.jpg) center top no-repeat;
+        background: url(/images/bg_cont_3.jpg) center top no-repeat;
         background-size: 100% 100%;
     }
 
     .card-box-2 {
-        background: url(images/bg_cont_4.jpg) center top no-repeat;
+        background: url(/images/bg_cont_4.jpg) center top no-repeat;
         background-size: 100% 100%;
     }
 
     .card-box-3 {
         margin-right: 30px;
-        background: url(images/bg_cont_5.jpg) center top no-repeat;
+        background: url(/images/bg_cont_5.jpg) center top no-repeat;
         background-size: 100% 100%;
     }
 
     .card-box-4 {
-        background: url(images/bg_cont_3.jpg) center top no-repeat;
+        background: url(/images/bg_cont_3.jpg) center top no-repeat;
         background-size: 100% 100%;
     }
 }
@@ -604,7 +604,7 @@ body {
         margin: 20px auto 0;
         border: 2px solid #084637;
         border-radius: 40px;
-        background: url(images/bg_cont_6.jpg) center top no-repeat,
+        background: url(/images/bg_cont_6.jpg) center top no-repeat,
                     linear-gradient(180deg, #0d231c 80%, rgba(#0d231c, 0.7) 90%); 
         background-size: 100%;
     }
@@ -716,7 +716,7 @@ body {
     .month-5 {
         
         dt {
-            background: url(images/sprites_month.png) -20px -314px;
+            background: url(/images/sprites_month.png) -20px -314px;
         }
     }
 
@@ -725,7 +725,7 @@ body {
         padding-top: 7px;
 
         dt {
-            background: url(images/sprites_month.png) -20px -20px;
+            background: url(/images/sprites_month.png) -20px -20px;
         }
 
         dd {
@@ -736,7 +736,7 @@ body {
     .month-9 {
 
         dt {
-            background: url(images/sprites_month.png) -20px -608px;
+            background: url(/images/sprites_month.png) -20px -608px;
         }
     }
     
@@ -746,7 +746,7 @@ body {
         margin-bottom: 0px;
         
         dt {
-            background: url(images/sprites_month.png) -20px -167px;
+            background: url(/images/sprites_month.png) -20px -167px;
         }
 
         dd {
@@ -758,7 +758,7 @@ body {
         margin-bottom: 0px;
 
         dt {
-            background: url(images/sprites_month.png) -20px -461px;
+            background: url(/images/sprites_month.png) -20px -461px;
         }
     }
 
@@ -769,7 +769,7 @@ body {
         border: 2px solid #084637;
         border-radius: 40px;
         text-align: center;
-        background: url(images/bg_cont_2.jpg) top center no-repeat;
+        background: url(/images/bg_cont_2.jpg) top center no-repeat;
         background-color: #0d231c;
         background-size: 100%;
     }
@@ -787,7 +787,7 @@ body {
 .swhz-wrap {
     padding-top: 0;
     margin-top: 10px;
-    background: url(images/bg_index_parnter.jpg) center center no-repeat;
+    background: url(/images/bg_index_parnter.jpg) center center no-repeat;
 
     .common-inner {
         width: 1024px;
@@ -804,7 +804,7 @@ body {
         height: 74px;
         padding: 30px 60px;
         float: left;
-        background: url(./images/px-step-box.png) no-repeat center top;
+        background: url(/images/px-step-box.png) no-repeat center top;
         color: #f2d8b6;
         font-size: 22px;
     }
@@ -914,7 +914,7 @@ body {
                 text-align: center;
                 color: #300;
                 font-size: 18px;
-                background: url(images/btn_vote.png) center top no-repeat;
+                background: url(/images/btn_vote.png) center top no-repeat;
             }
         }
     }
@@ -968,7 +968,7 @@ body {
             text-align: center;
             font-size: 22px;
             font-weight: bold;
-            background: url(images/btn_vote_long.png) center no-repeat;
+            background: url(/images/btn_vote_long.png) center no-repeat;
         }
 
         .nov {
@@ -1099,11 +1099,11 @@ body {
             }
 
             .down {
-                background: url(images/icon_up_down.png) center bottom no-repeat;
+                background: url(/images/icon_up_down.png) center bottom no-repeat;
             }
 
             .up {
-                background: url(images/icon_up_down.png) center top no-repeat;
+                background: url(/images/icon_up_down.png) center top no-repeat;
             }
         }
 
@@ -1148,7 +1148,7 @@ body {
 }
 
 .sign-up-wrap {
-    background: url(images/bg_bottom_stars.jpg) center calc(100% - 150px) no-repeat #060807;
+    background: url(/images/bg_bottom_stars.jpg) center calc(100% - 150px) no-repeat #060807;
 
     .sign-up-inner {
         padding-bottom: 80px;
@@ -1216,13 +1216,13 @@ body {
                 .icon-star {
                     width: 27px;
                     height: 27px;
-                    background: url(images/icon_star.png) center no-repeat;
+                    background: url(/images/icon_star.png) center no-repeat;
                 }
 
                 .icon-clover {
                     width: 28px;
                     height: 28px;
-                    background: url(images/icon_clover.png) center no-repeat;
+                    background: url(/images/icon_clover.png) center no-repeat;
                 }
             }
         }
@@ -1251,24 +1251,24 @@ body {
         }
 
         .company-icon {
-            background: url(./images/icon_company_orange.png) no-repeat left center;
+            background: url(/images/icon_company_orange.png) no-repeat left center;
         }
 
         .person-icon {
-            background: url(./images/icon_person_orange.png) left center no-repeat;
+            background: url(/images/icon_person_orange.png) left center no-repeat;
         }
 
         .phone-icon {
-            background: url(./images/icon_phone_orange.png) left center no-repeat;
+            background: url(/images/icon_phone_orange.png) left center no-repeat;
             background-size: auto 31px;
         }
 
         .mail-icon {
-            background: url(./images/icon_mail_orange.png) left center no-repeat;
+            background: url(/images/icon_mail_orange.png) left center no-repeat;
         }
 
         .remark-icon {
-            background: url(./images/icon_remark_orange.png) left center no-repeat;
+            background: url(/images/icon_remark_orange.png) left center no-repeat;
         }
 
         input {
@@ -1337,7 +1337,7 @@ body {
                     width: 29px;
                     height: 20px;
                     margin-top: -10px;
-                    background: url(images/icon_correct.png) center no-repeat;
+                    background: url(/images/icon_correct.png) center no-repeat;
                 }
             }
 
@@ -1358,7 +1358,7 @@ body {
             width: 15px;
             height: 18px;
             margin-left: 10px;
-            background: url(images/icon_arrow.png) center no-repeat;
+            background: url(/images/icon_arrow.png) center no-repeat;
             @include IE7inlineblock;
         }
 
@@ -1559,7 +1559,7 @@ body {
     margin: 0 auto;
     border: 2px solid #fedcb9;
     border-radius: 15px;
-    background: #0e231c url(images/bg_signup_success.jpg) center 100px no-repeat;
+    background: #0e231c url(/images/bg_signup_success.jpg) center 100px no-repeat;
 
     .tips {
         margin: 30px auto 280px;
@@ -1586,12 +1586,12 @@ body {
         color: #330000;
         font-size: 20px;
         font-weight: 600;
-        background: url(images/btn_close.png) center no-repeat;
+        background: url(/images/btn_close.png) center no-repeat;
     }
 }
 
 .dialog-failure {
-    background: #0e231c url(images/bg_signup_fail.jpg) center 100px no-repeat;
+    background: #0e231c url(/images/bg_signup_fail.jpg) center 100px no-repeat;
 }
 
 .scan_tip {
@@ -1608,7 +1608,7 @@ body {
 .hdjs-wrap {
     padding-top: 50px;
     margin-top: 0;
-    background: url(images/bg_index_intro.jpg) center top no-repeat;
+    background: url(/images/bg_index_intro.jpg) center top no-repeat;
     background-size: 100%;
 
     .corner-box {

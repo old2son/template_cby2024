@@ -10,7 +10,7 @@
 			<a href="#mtzy">媒体资源</a>
 		</dt>
 		<dd>
-			<a href="/signup" target="_blank">申报通道</a>
+			<a href="/desktop/signup" target="_blank">申报通道</a>
 		</dd>
 	</dl>
 </div>

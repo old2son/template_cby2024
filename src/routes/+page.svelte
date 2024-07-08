@@ -27,7 +27,7 @@
             border: 2px solid #ddd;
             border-top: 2px solid #3498db; 
             border-radius: 50%;
-            animation: spin 2s linear infinite;
+            animation: spin 1.5s linear infinite;
         }
     }
 
