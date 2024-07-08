@@ -1,6 +1,14 @@
 <script>
-    
+	import { sinupRankType } from '$lib/data/sinupRankType.js';
+	import { sinupMedList68, sinupMedList69, sinupMedList71 } from '$lib/data/sinupMedList.js';
+	import { slide } from 'svelte/transition';
+
+	$: isShowRankType = false;
 </script>
+
+<svelte:head>
+	<title>报名</title>
+</svelte:head>
 
 <div class="sign-up-cont">
 	<div class="msg-com">
@@ -67,15 +75,32 @@
 		<div class="info-wrap">
 			<div class="tl-bd"><i class="icon-star"></i>榜单类型</div>
 			<div class="picker-wrap picker-wrap-bd">
-				<label for="ranklist">
-					<em>请选择榜单类型<i></i></em>
-					<input name="ranklist" class="js-input-ranklist" type="text" value="" readonly="" />
-				</label>
-				<ul class="js-picker-bd hide">
-					<li data-id="68">家庭常备药上榜品牌</li>
-					<li data-id="71">家庭常备保健食品上榜品牌</li>
-					<li data-id="69">家庭常备医疗器械及消毒用品上榜品牌</li>
-				</ul>
+				<button
+					class="btn-signuptype"
+					on:click={() => {
+						isShowRankType = !isShowRankType;
+					}}
+				>
+					<label for="ranklist">
+						<em>请选择榜单类型<i></i></em>
+						<input name="ranklist" class="js-input-ranklist" type="text" value="" readonly="true" />
+					</label>
+				</button>
+
+				{#if isShowRankType}
+					<ul class="js-picker-bd" transition:slide={{ duration: 250 }}>
+						{#each sinupRankType as item}
+							<li>
+								<button
+									data-id={item.id}
+									on:click={() => {
+										isShowRankType = !isShowRankType;
+									}}>{item.content}</button
+								>
+							</li>
+						{/each}
+					</ul>
+				{/if}
 			</div>
 			<div class="tl-bd"><i class="icon-clover"></i>药品/保健品/医疗器械及消毒用品分类</div>
 			<div class="picker-wrap">

@@ -32,6 +32,11 @@ img {
     width: 100%;
 }
 
+button {
+    border: 0;
+    background: transparent;
+}
+
 html {
     min-height: 100%;
 }
@@ -1316,35 +1321,41 @@ body {
         }
 
         li {
-            position: relative;
-            height: 60px;
-            line-height: 60px;
-            padding: 0 60px 0 30px;
-            border-radius: 30px;
-            cursor: pointer;
-            color: #fff;
-            font-size: 22px;
-            @include ellipsis;
-
-            &.on {
-                color: #fedcb9;
-
-                &:after {
-                    position: absolute;
-                    top: 50%;
-                    right: 30px;
-                    content: '';
-                    width: 29px;
-                    height: 20px;
-                    margin-top: -10px;
-                    background: url(/images/icon_correct.png) center no-repeat;
+            button {
+                position: relative;
+                width: 100%;
+                height: 60px;
+                line-height: 60px;
+                padding: 0 60px 0 30px;
+                border-radius: 30px;
+                text-align: left;
+                cursor: pointer;
+                color: #fff;
+                font-size: 22px;
+                background-color: transparent;
+                @include ellipsis;
+    
+                &.on {
+                    color: #fedcb9;
+    
+                    &:after {
+                        position: absolute;
+                        top: 50%;
+                        right: 30px;
+                        content: '';
+                        width: 29px;
+                        height: 20px;
+                        margin-top: -10px;
+                        background: url(/images/icon_correct.png) center no-repeat;
+                    }
+                }
+    
+                &:hover {
+                    background-color: rgba(#fff, 0.1);
                 }
             }
-
-            &:hover {
-                background-color: rgba(#fff, 0.1);
-            }
         }
+        
 
         em {
             display: block;
@@ -1362,17 +1373,21 @@ body {
             @include IE7inlineblock;
         }
 
-        label {
+        $pickerHeight: 56px;
+        label,
+        .btn-signuptype {
             display: block;
             position: relative;
-            height: 56px;
-            line-height: 56px;
+            width: 100%;
+            height: $pickerHeight;
+            line-height: $pickerHeight;
             overflow: hidden;
             border: 2px solid #fedcb9;
             border-radius: 40px;
             cursor: pointer;
             color: #fedcb9;
             font-size: 22px;
+            background-color: transparent;
         }
 
         input {
@@ -1382,11 +1397,21 @@ body {
             top: 0;
             bottom: 0;
             width: 100%;
-            height: 56px;
-            line-height: 56px;
+            height: $pickerHeight;
+            line-height: $pickerHeight;
             cursor: pointer;
             border: 0;
             background-color: transparent;
+        }
+
+        .btn-signuptype {
+            label,
+            input {
+                height: $pickerHeight - 4px;
+                line-height: $pickerHeight - 4px;
+                padding: 0;
+                border: 0;
+            }
         }
     }
 
