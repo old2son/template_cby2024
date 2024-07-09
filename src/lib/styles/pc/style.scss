@@ -1153,9 +1153,11 @@ body {
 }
 
 .sign-up-wrap {
-    background: url(/images/bg_bottom_stars.jpg) center calc(100% - 150px) no-repeat #060807;
+    padding-bottom: 80px;
+    background: url(/images/bg_bottom_stars.jpg) center bottom no-repeat #060807;
 
     .sign-up-inner {
+        min-height: 650px;
         padding-bottom: 80px;
     }
 
@@ -1373,9 +1375,10 @@ body {
             @include IE7inlineblock;
         }
 
-        $pickerHeight: 56px;
+        $pickerHeight: 58px;
         label,
-        .btn-signuptype {
+        .btn-signuptype,
+        .btn-stufflist {
             display: block;
             position: relative;
             width: 100%;
@@ -1404,7 +1407,8 @@ body {
             background-color: transparent;
         }
 
-        .btn-signuptype {
+        .btn-signuptype,
+        .btn-stufflist {
             label,
             input {
                 height: $pickerHeight - 4px;
