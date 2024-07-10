@@ -2,21 +2,10 @@
 	import { onMount } from 'svelte';
 	import { navStore } from '$lib/stores/navStore.js';
 
-	export let distanceY = 300;
-
 	let index = 0;
-
-	navStore.subscribe((value) => {
-		index = value;
-		console.log(index);
-	}); 
-
-	// navStore.update((value) => {
-	// 	return value;
-	// });
-
-
 	let fixed = false;
+	let wrap;	
+	let nav;	
 
 	const urlData = [
 		{
@@ -54,8 +43,24 @@
 	];
 
 	const handler = () => {
-		window.scrollY > distanceY ? (fixed = true) : (fixed = false);
+		if (window.scrollY > 0) {
+			wrap.style.position = 'static';
+			fixed = true;
+		}
+		else {
+			wrap.style.position = 'relative';	
+			fixed = false;
+		}
 	};
+
+	// navStore.subscribe((value) => {
+	// 	index = value;
+	// 	console.log(index);
+	// }); 
+
+	// navStore.update((value) => {
+	// 	return value;
+	// });
 
 	onMount(() => {
 		if (window.location.pathname === '/desktop') {
@@ -81,19 +86,21 @@
 
 <svelte:window on:scroll={handler} />
 
-<div class="nav-wrap fixed">
-	<dl>
-		<dt class="js-nav-tabs">
-			{#each urlData as item}
-				{#if item.url !== urlData[urlData.length - 1].url}
-					<a href="{item.url}">{item.name}</a>
-				{/if}
-			{/each}
-		</dt>
-		<dd>
-			<a href="{urlData[urlData.length - 1].url}" target="_blank">{urlData[urlData.length - 1].name}</a>
-		</dd>
-	</dl>
+<div class="nav-wrap" bind:this={wrap}>
+	<div class="nav-inner" bind:this={nav} class:fixed>
+		<dl>
+			<dt class="js-nav-tabs">
+				{#each urlData as item}
+					{#if item.url !== urlData[urlData.length - 1].url}
+						<a href="{item.url}">{item.name}</a>
+					{/if}
+				{/each}
+			</dt>
+			<dd>
+				<a href="{urlData[urlData.length - 1].url}" target="_blank">{urlData[urlData.length - 1].name}</a>
+			</dd>
+		</dl>
+	</div>
 </div>
 
 <style lang="scss">

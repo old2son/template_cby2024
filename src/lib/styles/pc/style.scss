@@ -200,7 +200,7 @@ body {
     }
 }
 
-.nav-wrap {
+.nav-inner {
     $height: 65px;
     position: absolute;
     left: 0;
@@ -209,8 +209,9 @@ body {
     height: $height;
     line-height: $height;
     overflow: hidden;
-    transition: all 0.2s linear;
-    background-color: rgba(#051b18, 0.9);
+    z-index: 10;
+    transition: all 0.35s linear;
+    background-color: rgba(#051b18, 0.8);
 
     &.fixed {
         position: fixed;
