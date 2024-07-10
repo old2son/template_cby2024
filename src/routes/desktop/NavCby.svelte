@@ -1,3 +1,11 @@
+<script>
+	import { onMount } from 'svelte';
+
+	onMount(() => {
+		console.log(window.location.href)
+	});
+</script>
+
 <div class="nav-wrap fixed">
 	<dl>
 		<dt class="js-nav-tabs">

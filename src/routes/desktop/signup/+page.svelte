@@ -6,7 +6,6 @@
 
 	let isShowRankType = false;
 	let isShowStuff = false;
-	let isShowToast = false;
 	let rankCont = '请选择榜单类型';
 	let stuffCont = '请选择分类';
 	let rankId = 0;
@@ -16,7 +15,11 @@
 	let phone = '';
 	let email = '';
 	let remark = '';
-	let submitData = {};
+
+	const toastProps = {
+		message: '',
+		visible: false
+	};
 
 	const getStuffList = (rankId) => {
 		if (rankId === 68) {
@@ -35,12 +38,41 @@
 
 	$: stuffList = getStuffList(rankId);
 	$: submitData = {
+		name,
+		contactPerson,
+		phone,
+		email,
+		remark,
 		rankId,
 		stuffId
 	};
 
-	$: {
-		console.log(submitData);
+	function validate(data) {
+		console.log(data);
+		if (!data.name.trim()) {
+			toastProps.message = '请输入公司名称';
+		}
+		else if (!data.contactPerson.trim()) {
+			toastProps.message = '请输入联系人';
+		}
+		else if (!data.phone.trim()) {
+			toastProps.message = '请输入联系电话';
+		}
+		else if (!data.email.trim()) {
+			toastProps.message = '请输入邮箱';
+		}
+		else if (!data.remark.trim()) {
+			toastProps.message = '请输入备注';
+		}
+		else if (!data.rankId) {
+			toastProps.message = '请选择榜单类型';
+		}
+		else if (!data.stuffId) {
+			toastProps.message = '请选择分类';
+		}
+		else {
+			toastProps.message = '提交成功';
+		}
 	}
 </script>
 
@@ -71,8 +103,8 @@
 							name="name"
 							type="text"
 							id="company"
-							bind:value={name}
 							placeholder="请输入公司名称"
+							bind:value={name}
 						/>
 					</div>
 					<div class="clear clearfix">
@@ -83,8 +115,8 @@
 							name="contactPerson"
 							type="text"
 							id="person"
-							bind:value={contactPerson}
 							placeholder="请输入姓名"
+							bind:value={contactPerson}
 						/>
 					</div>
 					<div class="clear clearfix">
@@ -95,9 +127,9 @@
 							name="contactInfo"
 							type="tel"
 							id="contact"
-							bind:value={phone}
 							placeholder="请输入联系方式"
 							maxlength="11"
+							bind:value={phone}
 						/>
 					</div>
 					<div class="clear clearfix">
@@ -108,8 +140,8 @@
 							name="email"
 							type="email"
 							id="mail"
-							bind:value={email}
 							placeholder="请输入邮箱"
+							bind:value={email}
 						/>
 					</div>
 					<div class="none-bottom">
@@ -120,8 +152,8 @@
 							name="remark"
 							type="text"
 							id="remark"
-							bind:value={remark}
 							placeholder="请输入备注"
+							bind:value={remark}
 						/>
 					</div>
 				</div>
@@ -176,6 +208,9 @@
 						<button
 							class="btn-stufflist"
 							on:click={() => {
+								if (!rankId) {
+									return;
+								}
 								isShowStuff = !isShowStuff;
 							}}
 						>
@@ -214,18 +249,22 @@
 	</div>
 
 	<p class="tips">提交报名资料后，我们会在5个工作日内联系您。</p>
-	<a class="common-btn-light" id="js-submit">提交报名</a>
+	<button
+		class="common-btn-light"
+		id="js-submit"
+		on:click={() => {
+			if (toastProps.visible) {
+				return;
+			}
+			toastProps.visible = true;
+			validate(submitData);
+			setTimeout(() => {
+				toastProps.visible = false;
+			}, 2000);
+		}}>提交报名</button
+	>
+	<Toast {...toastProps}/>
 </div>
 
-<button style="color: aqua;" on:click={()=>{
-	if (isShowToast) {
-		return;
-	}
-	isShowToast = true
-	setTimeout(()=>{
-		isShowToast = false
-	}, 1500)
-}}>Show Toast</button>
-	<Toast message={isShowToast} visible={isShowToast}/>
 <style lang="scss">
 </style>

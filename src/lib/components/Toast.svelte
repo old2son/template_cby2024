@@ -20,8 +20,9 @@
 		padding: 10px 20px;
 		border-radius: 5px;
 		transform: translate(-50%, -50%);
-		font-size: 18px;
+		font-size: 22px;
+		font-weight: 400;
 		color: #fff;
-		background-color: rgba(0, 0, 0, 0.8);
+		background-color: rgba(0, 0, 0, 0.9);
 	}
 </style>
