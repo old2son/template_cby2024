@@ -1,24 +1,34 @@
 <script>
+	import Toast from '@src/lib/components/Toast.svelte';
 	import { sinupRankType } from '$lib/data/sinupRankType.js';
 	import { sinupMedList68, sinupMedList69, sinupMedList71 } from '$lib/data/sinupMedList.js';
 	import { slide } from 'svelte/transition';
 
 	let isShowRankType = false;
 	let isShowStuff = false;
+	let isShowToast = false;
 	let rankCont = '请选择榜单类型';
 	let stuffCont = '请选择分类';
 	let rankId = 0;
 	let stuffId = 0;
+	let name = '';
+	let contactPerson = '';
+	let phone = '';
+	let email = '';
+	let remark = '';
 	let submitData = {};
 
 	const getStuffList = (rankId) => {
 		if (rankId === 68) {
 			return sinupMedList68;
-		} else if (rankId === 69) {
+		} 
+		else if (rankId === 69) {
 			return sinupMedList69;
-		} else if (rankId === 71) {
+		} 
+		else if (rankId === 71) {
 			return sinupMedList71;
-		} else {
+		} 
+		else {
 			return [];
 		}
 	};
@@ -61,8 +71,8 @@
 							name="name"
 							type="text"
 							id="company"
+							bind:value={name}
 							placeholder="请输入公司名称"
-							value="请输入公司名称"
 						/>
 					</div>
 					<div class="clear clearfix">
@@ -73,8 +83,8 @@
 							name="contactPerson"
 							type="text"
 							id="person"
+							bind:value={contactPerson}
 							placeholder="请输入姓名"
-							value="请输入姓名"
 						/>
 					</div>
 					<div class="clear clearfix">
@@ -85,8 +95,8 @@
 							name="contactInfo"
 							type="tel"
 							id="contact"
+							bind:value={phone}
 							placeholder="请输入联系方式"
-							value="请输入联系方式"
 							maxlength="11"
 						/>
 					</div>
@@ -98,8 +108,8 @@
 							name="email"
 							type="email"
 							id="mail"
+							bind:value={email}
 							placeholder="请输入邮箱"
-							value="请输入邮箱"
 						/>
 					</div>
 					<div class="none-bottom">
@@ -110,8 +120,8 @@
 							name="remark"
 							type="text"
 							id="remark"
+							bind:value={remark}
 							placeholder="请输入备注"
-							value="请输入备注"
 						/>
 					</div>
 				</div>
@@ -207,5 +217,15 @@
 	<a class="common-btn-light" id="js-submit">提交报名</a>
 </div>
 
+<button style="color: aqua;" on:click={()=>{
+	if (isShowToast) {
+		return;
+	}
+	isShowToast = true
+	setTimeout(()=>{
+		isShowToast = false
+	}, 1500)
+}}>Show Toast</button>
+	<Toast message={isShowToast} visible={isShowToast}/>
 <style lang="scss">
 </style>
