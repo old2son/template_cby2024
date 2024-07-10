@@ -1,4 +1,6 @@
 <script>
+	import GoTop from "@src/lib/components/GoTop.svelte";
+	import GoRank from "@src/lib/components/GoRank.svelte";
 </script>
 
 <div class="top-banner">
@@ -68,7 +70,7 @@
 				<div class="bd-content">
 					<a
 						target="_blank"
-						href="https://cby.familydoctor.com.cn/cby2023/cbyList/?prizeId=808&amp;bangdanId=68&amp;page=1"
+						href="desktop/cbyList/"
 						class="jxsz-btn">安神助眠药</a
 					><a
 						target="_blank"
@@ -595,8 +597,9 @@
 			</div>
 		</div>
 	</div>
-	<a class="btn-gotop js-gotop" href="#home">回顶端</a>
-	<a class="btn-rank" href="m/rank" target="_blank">查看排名</a>
+
+	<GoTop />
+	<GoRank />
 </div>
 
 <style lang="scss">

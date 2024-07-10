@@ -1,4 +1,5 @@
 <script>
+	import Toast from '@src/lib/components/Toast.svelte';
 	import { sinupRankType } from '$lib/data/sinupRankType.js';
 	import { sinupMedList68, sinupMedList69, sinupMedList71 } from '$lib/data/sinupMedList.js';
 	import { slide } from 'svelte/transition';
@@ -9,28 +10,69 @@
 	let stuffCont = '请选择分类';
 	let rankId = 0;
 	let stuffId = 0;
-	let submitData = {};
+	let name = '';
+	let contactPerson = '';
+	let phone = '';
+	let email = '';
+	let remark = '';
+
+	const toastProps = {
+		message: '',
+		visible: false
+	};
 
 	const getStuffList = (rankId) => {
 		if (rankId === 68) {
 			return sinupMedList68;
-		} else if (rankId === 69) {
+		} 
+		else if (rankId === 69) {
 			return sinupMedList69;
-		} else if (rankId === 71) {
+		} 
+		else if (rankId === 71) {
 			return sinupMedList71;
-		} else {
+		} 
+		else {
 			return [];
 		}
 	};
 
 	$: stuffList = getStuffList(rankId);
 	$: submitData = {
+		name,
+		contactPerson,
+		phone,
+		email,
+		remark,
 		rankId,
 		stuffId
 	};
 
-	$: {
-		console.log(submitData);
+	function validate(data) {
+		console.log(data);
+		if (!data.name.trim()) {
+			toastProps.message = '请输入公司名称';
+		}
+		else if (!data.contactPerson.trim()) {
+			toastProps.message = '请输入联系人';
+		}
+		else if (!data.phone.trim()) {
+			toastProps.message = '请输入联系电话';
+		}
+		else if (!data.email.trim()) {
+			toastProps.message = '请输入邮箱';
+		}
+		else if (!data.remark.trim()) {
+			toastProps.message = '请输入备注';
+		}
+		else if (!data.rankId) {
+			toastProps.message = '请选择榜单类型';
+		}
+		else if (!data.stuffId) {
+			toastProps.message = '请选择分类';
+		}
+		else {
+			toastProps.message = '提交成功';
+		}
 	}
 </script>
 
@@ -62,7 +104,7 @@
 							type="text"
 							id="company"
 							placeholder="请输入公司名称"
-							value="请输入公司名称"
+							bind:value={name}
 						/>
 					</div>
 					<div class="clear clearfix">
@@ -74,7 +116,7 @@
 							type="text"
 							id="person"
 							placeholder="请输入姓名"
-							value="请输入姓名"
+							bind:value={contactPerson}
 						/>
 					</div>
 					<div class="clear clearfix">
@@ -86,8 +128,8 @@
 							type="tel"
 							id="contact"
 							placeholder="请输入联系方式"
-							value="请输入联系方式"
 							maxlength="11"
+							bind:value={phone}
 						/>
 					</div>
 					<div class="clear clearfix">
@@ -99,7 +141,7 @@
 							type="email"
 							id="mail"
 							placeholder="请输入邮箱"
-							value="请输入邮箱"
+							bind:value={email}
 						/>
 					</div>
 					<div class="none-bottom">
@@ -111,7 +153,7 @@
 							type="text"
 							id="remark"
 							placeholder="请输入备注"
-							value="请输入备注"
+							bind:value={remark}
 						/>
 					</div>
 				</div>
@@ -166,6 +208,9 @@
 						<button
 							class="btn-stufflist"
 							on:click={() => {
+								if (!rankId) {
+									return;
+								}
 								isShowStuff = !isShowStuff;
 							}}
 						>
@@ -204,7 +249,21 @@
 	</div>
 
 	<p class="tips">提交报名资料后，我们会在5个工作日内联系您。</p>
-	<a class="common-btn-light" id="js-submit">提交报名</a>
+	<button
+		class="common-btn-light"
+		id="js-submit"
+		on:click={() => {
+			if (toastProps.visible) {
+				return;
+			}
+			toastProps.visible = true;
+			validate(submitData);
+			setTimeout(() => {
+				toastProps.visible = false;
+			}, 2000);
+		}}>提交报名</button
+	>
+	<Toast {...toastProps}/>
 </div>
 
 <style lang="scss">
