@@ -43,7 +43,7 @@
 	];
 
 	const handler = () => {
-		if (window.scrollY > 0) {
+		if (window.scrollY > nav.offsetHeight) {
 			wrap.style.position = 'static';
 			fixed = true;
 		}
@@ -52,6 +52,10 @@
 			fixed = false;
 		}
 	};
+
+	const test = () => {
+		console.log('test');
+	}
 
 	// navStore.subscribe((value) => {
 	// 	index = value;
@@ -87,7 +91,7 @@
 <svelte:window on:scroll={handler} />
 
 <div class="nav-wrap" bind:this={wrap}>
-	<div class="nav-inner" bind:this={nav} class:fixed>
+	<div class="nav-inner" bind:this={nav} class:fixed >
 		<dl>
 			<dt class="js-nav-tabs">
 				{#each urlData as item}

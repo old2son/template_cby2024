@@ -210,12 +210,12 @@ body {
     line-height: $height;
     overflow: hidden;
     z-index: 10;
-    transition: all 0.35s linear;
+    transition: all 3s linear;
     background-color: rgba(#051b18, 0.8);
 
     &.fixed {
         position: fixed;
-        top: 0;
+        top: 0px;
         z-index: 10;
         background-color: #051b18;
     }

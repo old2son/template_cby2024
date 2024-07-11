@@ -1,4 +1,7 @@
 <script>
+	import { medTypeList } from '$lib/data/medTypeList.js';
+	import { dailyTypeList } from '@src/lib/data/dailyTypeList.js';
+	import { foodTypeList } from '$lib/data/foodTypeList.js';
 	import GoTop from "@src/lib/components/GoTop.svelte";
 	import GoRank from "@src/lib/components/GoRank.svelte";
 </script>
@@ -68,119 +71,14 @@
 					<h2>家庭常备药上榜品牌</h2>
 				</div>
 				<div class="bd-content">
-					<a
-						target="_blank"
-						href="desktop/cbyList/"
-						class="jxsz-btn">安神助眠药</a
-					><a
-						target="_blank"
-						href="https://cby.familydoctor.com.cn/cby2023/cbyList/?prizeId=892&amp;bangdanId=68&amp;page=1"
-						class="jxsz-btn">补益用药</a
-					><a
-						target="_blank"
-						href="https://cby.familydoctor.com.cn/cby2023/cbyList/?prizeId=784&amp;bangdanId=68&amp;page=1"
-						class="jxsz-btn">肠胃用药</a
-					><a
-						target="_blank"
-						href="https://cby.familydoctor.com.cn/cby2023/cbyList/?prizeId=785&amp;bangdanId=68&amp;page=1"
-						class="jxsz-btn">儿科用药</a
-					><a
-						target="_blank"
-						href="https://cby.familydoctor.com.cn/cby2023/cbyList/?prizeId=786&amp;bangdanId=68&amp;page=1"
-						class="jxsz-btn">风湿骨病药</a
-					><a
-						target="_blank"
-						href="https://cby.familydoctor.com.cn/cby2023/cbyList/?prizeId=787&amp;bangdanId=68&amp;page=1"
-						class="jxsz-btn">妇科药</a
-					><a
-						target="_blank"
-						href="https://cby.familydoctor.com.cn/cby2023/cbyList/?prizeId=788&amp;bangdanId=68&amp;page=1"
-						class="jxsz-btn">肝胆用药</a
-					><a
-						target="_blank"
-						href="https://cby.familydoctor.com.cn/cby2023/cbyList/?prizeId=789&amp;bangdanId=68&amp;page=1"
-						class="jxsz-btn">感冒药</a
-					><a
-						target="_blank"
-						href="https://cby.familydoctor.com.cn/cby2023/cbyList/?prizeId=806&amp;bangdanId=68&amp;page=1"
-						class="jxsz-btn">呼吸用药</a
-					><a
-						target="_blank"
-						href="https://cby.familydoctor.com.cn/cby2023/cbyList/?prizeId=1069&amp;bangdanId=68&amp;page=1"
-						class="jxsz-btn">降血压药</a
-					><a
-						target="_blank"
-						href="https://cby.familydoctor.com.cn/cby2023/cbyList/?prizeId=1068&amp;bangdanId=68&amp;page=1"
-						class="jxsz-btn">抗病毒药</a
-					><a
-						target="_blank"
-						href="https://cby.familydoctor.com.cn/cby2023/cbyList/?prizeId=894&amp;bangdanId=68&amp;page=1"
-						class="jxsz-btn">抗感染药</a
-					><a
-						target="_blank"
-						href="https://cby.familydoctor.com.cn/cby2023/cbyList/?prizeId=791&amp;bangdanId=68&amp;page=1"
-						class="jxsz-btn">抗过敏药</a
-					><a
-						target="_blank"
-						href="https://cby.familydoctor.com.cn/cby2023/cbyList/?prizeId=1047&amp;bangdanId=68&amp;page=1"
-						class="jxsz-btn">抗衰老药</a
-					><a
-						target="_blank"
-						href="https://cby.familydoctor.com.cn/cby2023/cbyList/?prizeId=807&amp;bangdanId=68&amp;page=1"
-						class="jxsz-btn">口服抗菌消炎药</a
-					><a
-						target="_blank"
-						href="https://cby.familydoctor.com.cn/cby2023/cbyList/?prizeId=793&amp;bangdanId=68&amp;page=1"
-						class="jxsz-btn">口腔咽喉药</a
-					><a
-						target="_blank"
-						href="https://cby.familydoctor.com.cn/cby2023/cbyList/?prizeId=795&amp;bangdanId=68&amp;page=1"
-						class="jxsz-btn">内服止痛药</a
-					><a
-						target="_blank"
-						href="https://cby.familydoctor.com.cn/cby2023/cbyList/?prizeId=794&amp;bangdanId=68&amp;page=1"
-						class="jxsz-btn">男科用药</a
-					><a
-						target="_blank"
-						href="https://cby.familydoctor.com.cn/cby2023/cbyList/?prizeId=796&amp;bangdanId=68&amp;page=1"
-						class="jxsz-btn">皮肤药</a
-					><a
-						target="_blank"
-						href="https://cby.familydoctor.com.cn/cby2023/cbyList/?prizeId=804&amp;bangdanId=68&amp;page=1"
-						class="jxsz-btn">润肠通便药</a
-					><a
-						target="_blank"
-						href="https://cby.familydoctor.com.cn/cby2023/cbyList/?prizeId=799&amp;bangdanId=68&amp;page=1"
-						class="jxsz-btn">糖尿病药</a
-					><a
-						target="_blank"
-						href="https://cby.familydoctor.com.cn/cby2023/cbyList/?prizeId=800&amp;bangdanId=68&amp;page=1"
-						class="jxsz-btn">外用止痛药</a
-					><a
-						target="_blank"
-						href="https://cby.familydoctor.com.cn/cby2023/cbyList/?prizeId=901&amp;bangdanId=68&amp;page=1"
-						class="jxsz-btn">维矿用药</a
-					><a
-						target="_blank"
-						href="https://cby.familydoctor.com.cn/cby2023/cbyList/?prizeId=805&amp;bangdanId=68&amp;page=1"
-						class="jxsz-btn">消炎解毒</a
-					><a
-						target="_blank"
-						href="https://cby.familydoctor.com.cn/cby2023/cbyList/?prizeId=801&amp;bangdanId=68&amp;page=1"
-						class="jxsz-btn">心脑血管药</a
-					><a
-						target="_blank"
-						href="https://cby.familydoctor.com.cn/cby2023/cbyList/?prizeId=1063&amp;bangdanId=68&amp;page=1"
-						class="jxsz-btn">醒酒用药</a
-					><a
-						target="_blank"
-						href="https://cby.familydoctor.com.cn/cby2023/cbyList/?prizeId=802&amp;bangdanId=68&amp;page=1"
-						class="jxsz-btn">眼药</a
-					><a
-						target="_blank"
-						href="https://cby.familydoctor.com.cn/cby2023/cbyList/?prizeId=797&amp;bangdanId=68&amp;page=1"
-						class="jxsz-btn">止咳祛痰药</a
-					>
+					{#each medTypeList as item}
+						<a
+							target="_blank"
+							href="{`/desktop/cbyList/${item.id}`}"
+							class="jxsz-btn">{item.name}</a
+						>
+					{/each}
+					
 				</div>
 			</div>
 			<div class="jxsz-corner jxsz-bd js-list-food js-nav-item" id="bjsp">
@@ -188,60 +86,36 @@
 					<h2>家庭常备保健食品上榜品牌</h2>
 				</div>
 				<div class="bd-content">
-					<div class="bjp-box">
-						<dl>
-							<dt>
-								<img
-									src="https://img.familydoctor.com.cn/uploadimg/cbyhys/2023/10/18/11/e70677428b0100001fab71542a020000.jpeg"
-									alt=""
-								/>
-							</dt>
-							<dd class="med-info">
-								<p class="med-name">
+					{#each dailyTypeList as item}
+						<div class="bjp-box">
+							<dl>
+								<dt>
+									<img
+										style="width: 100%;height: 100%;object-fit: cover;"
+										src="/images/meds/{item.imgSrc}"
+										alt=""
+									/>
+								</dt>
+								<dd class="med-info">
+									<p class="med-name">
+										<a
+											target="_blank"
+											href="https://cby.familydoctor.com.cn/cby2023/cbyMedDetail/?objectId=425&amp;prizeId=840&amp;bangdanId=undefined&amp;page=1"
+											>河洛怀府<sup>®</sup>铁棍山药粉</a
+										>
+									</p>
+									<p class="company">焦作瑞陟怀药产业发展有限公司</p>
+								</dd>
+								<dd class="fr">
 									<a
 										target="_blank"
-										href="https://cby.familydoctor.com.cn/cby2023/cbyMedDetail/?objectId=425&amp;prizeId=840&amp;bangdanId=undefined&amp;page=1"
-										>河洛怀府<sup>®</sup>铁棍山药粉</a
+										href="https://cby.familydoctor.com.cn/cby2023/cbyMedDetail/?objectId=425&amp;prizeId=840&amp;bangdanId=71"
+										>查看</a
 									>
-								</p>
-								<p class="company">焦作瑞陟怀药产业发展有限公司</p>
-							</dd>
-							<dd class="fr">
-								<a
-									target="_blank"
-									href="https://cby.familydoctor.com.cn/cby2023/cbyMedDetail/?objectId=425&amp;prizeId=840&amp;bangdanId=71"
-									>查看</a
-								>
-							</dd>
-						</dl>
-					</div>
-					<div class="bjp-box">
-						<dl>
-							<dt>
-								<img
-									src="https://img.familydoctor.com.cn/uploadimg/cbyhys/2023/10/18/11/5ff978428b0100001fab71542a030000.jpeg"
-									alt=""
-								/>
-							</dt>
-							<dd class="med-info">
-								<p class="med-name">
-									<a
-										target="_blank"
-										href="https://cby.familydoctor.com.cn/cby2023/cbyMedDetail/?objectId=426&amp;prizeId=840&amp;bangdanId=undefined&amp;page=1"
-										>石西源水溶性植物硒蛋白肽片</a
-									>
-								</p>
-								<p class="company">云南玉药健康产业有限公司</p>
-							</dd>
-							<dd class="fr">
-								<a
-									target="_blank"
-									href="https://cby.familydoctor.com.cn/cby2023/cbyMedDetail/?objectId=426&amp;prizeId=840&amp;bangdanId=71"
-									>查看</a
-								>
-							</dd>
-						</dl>
-					</div>
+								</dd>
+							</dl>
+						</div>
+					{/each}
 				</div>
 			</div>
 			<div class="jxsz-corner jxsz-bd js-list-qx js-nav-item" id="ylqx">
