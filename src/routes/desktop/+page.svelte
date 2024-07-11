@@ -2,8 +2,8 @@
 	import { medTypeList } from '$lib/data/medTypeList.js';
 	import { dailyTypeList } from '@src/lib/data/dailyTypeList.js';
 	import { foodTypeList } from '$lib/data/foodTypeList.js';
-	import GoTop from "@src/lib/components/GoTop.svelte";
-	import GoRank from "@src/lib/components/GoRank.svelte";
+	import GoTop from '@src/lib/components/GoTop.svelte';
+	import GoRank from '@src/lib/components/GoRank.svelte';
 </script>
 
 <div class="top-banner">
@@ -13,10 +13,7 @@
 <div class="content-body">
 	<div class="hdjs-wrap mode-wrap js-nav-item" id="hdjs">
 		<div class="wrap-title">
-			<img
-				src="images/tl_intro.png"
-				alt=""
-			/>
+			<img src="images/tl_intro.png" alt="" />
 		</div>
 		<div class="hdjs-content wrap-content">
 			<div class="corner-box">
@@ -60,10 +57,7 @@
 	</div>
 	<div class="jxsz-wrap mode-wrap">
 		<div class="wrap-title">
-			<img
-				src="images/tl_rank.jpg"
-				alt=""
-			/>
+			<img src="images/tl_rank.jpg" alt="" />
 		</div>
 		<div class="jxsz-content wrap-content">
 			<div class="jxsz-corner jxsz-bd js-list-drug js-nav-item" id="cbyb">
@@ -72,13 +66,8 @@
 				</div>
 				<div class="bd-content">
 					{#each medTypeList as item}
-						<a
-							target="_blank"
-							href="{`/desktop/cbyList/${item.id}`}"
-							class="jxsz-btn">{item.name}</a
-						>
+						<a target="_blank" href={`/desktop/cbyList/${item.id}`} class="jxsz-btn">{item.name}</a>
 					{/each}
-					
 				</div>
 			</div>
 			<div class="jxsz-corner jxsz-bd js-list-food js-nav-item" id="bjsp">
@@ -93,25 +82,17 @@
 									<img
 										style="width: 100%;height: 100%;object-fit: cover;"
 										src="/images/meds/{item.imgSrc}"
-										alt=""
+										alt={item.name}
 									/>
 								</dt>
 								<dd class="med-info">
 									<p class="med-name">
-										<a
-											target="_blank"
-											href="https://cby.familydoctor.com.cn/cby2023/cbyMedDetail/?objectId=425&amp;prizeId=840&amp;bangdanId=undefined&amp;page=1"
-											>河洛怀府<sup>®</sup>铁棍山药粉</a
-										>
+										<a href="/desktop/cbyMed/{item.id}" target="_blank">{item.name}</a>
 									</p>
-									<p class="company">焦作瑞陟怀药产业发展有限公司</p>
+									<p class="company">{item.factoryName}</p>
 								</dd>
 								<dd class="fr">
-									<a
-										target="_blank"
-										href="https://cby.familydoctor.com.cn/cby2023/cbyMedDetail/?objectId=425&amp;prizeId=840&amp;bangdanId=71"
-										>查看</a
-									>
+									<a href="/desktop/cbyMed/{item.id}" target="_blank">查看</a>
 								</dd>
 							</dl>
 						</div>
@@ -123,143 +104,28 @@
 					<h2>家庭常备医疗器械及消毒用品上榜品牌</h2>
 				</div>
 				<div class="bd-content">
-					<div class="bjp-box">
-						<dl>
-							<dt>
-								<img
-									src="https://img.familydoctor.com.cn/uploadimg/cbyhys/2023/05/11/18/fef6fe0b880100001fab71b08d360100.jpeg"
-									alt=""
-								/>
-							</dt>
-							<dd class="med-info">
-								<p class="med-name">
-									<a
-										target="_blank"
-										href="https://cby.familydoctor.com.cn/cby2023/cbyMedDetail/?objectId=349&amp;prizeId=840&amp;bangdanId=undefined&amp;page=1"
-										>羚锐<sup>®</sup>小羚羊医用退热贴</a
-									>
-								</p>
-								<p class="company">河南羚锐制药股份有限公司</p>
-							</dd>
-							<dd class="fr">
-								<a
-									target="_blank"
-									href="https://cby.familydoctor.com.cn/cby2023/cbyMedDetail/?objectId=349&amp;prizeId=840&amp;bangdanId=69"
-									>查看</a
-								>
-							</dd>
-						</dl>
-					</div>
-					<div class="bjp-box">
-						<dl>
-							<dt>
-								<img
-									src="https://img.familydoctor.com.cn/uploadimg/cbyhys/2023/11/07/14/2b0820aa8b0100001fab71e83b0a0000.jpeg"
-									alt=""
-								/>
-							</dt>
-							<dd class="med-info">
-								<p class="med-name">
-									<a
-										target="_blank"
-										href="https://cby.familydoctor.com.cn/cby2023/cbyMedDetail/?objectId=434&amp;prizeId=840&amp;bangdanId=undefined&amp;page=1"
-										>切诺<sup>®</sup>生理性海水鼻腔喷雾器</a
-									>
-								</p>
-								<p class="company">北京远大九和药业有限公司</p>
-							</dd>
-							<dd class="fr">
-								<a
-									target="_blank"
-									href="https://cby.familydoctor.com.cn/cby2023/cbyMedDetail/?objectId=434&amp;prizeId=840&amp;bangdanId=69"
-									>查看</a
-								>
-							</dd>
-						</dl>
-					</div>
-					<div class="bjp-box">
-						<dl>
-							<dt>
-								<img
-									src="https://img.familydoctor.com.cn/uploadimg/cbyhys/2023/10/27/11/56feec708b0100001fab71281e050000.jpeg"
-									alt=""
-								/>
-							</dt>
-							<dd class="med-info">
-								<p class="med-name">
-									<a
-										target="_blank"
-										href="https://cby.familydoctor.com.cn/cby2023/cbyMedDetail/?objectId=427&amp;prizeId=840&amp;bangdanId=undefined&amp;page=1"
-										>雅思汀娜<sup>®</sup>皮肤黏膜消毒剂</a
-									>
-								</p>
-								<p class="company">
-									研发企业：雅思汀娜（北京）科技有限公司 代工生产企业：河南珍康医疗器械有限公司
-								</p>
-							</dd>
-							<dd class="fr">
-								<a
-									target="_blank"
-									href="https://cby.familydoctor.com.cn/cby2023/cbyMedDetail/?objectId=427&amp;prizeId=840&amp;bangdanId=69"
-									>查看</a
-								>
-							</dd>
-						</dl>
-					</div>
-					<div class="bjp-box">
-						<dl>
-							<dt>
-								<img
-									src="https://img.familydoctor.com.cn/uploadimg/cbyhys/2023/08/22/14/09c9ab1d8a0100001fab71d014700000.jpeg"
-									alt=""
-								/>
-							</dt>
-							<dd class="med-info">
-								<p class="med-name">
-									<a
-										target="_blank"
-										href="https://cby.familydoctor.com.cn/cby2023/cbyMedDetail/?objectId=410&amp;prizeId=840&amp;bangdanId=undefined&amp;page=1"
-										>白翘<sup>®</sup>皮肤抑菌膏</a
-									>
-								</p>
-								<p class="company">银川经济技术开发区千惠健康生物有限公司</p>
-							</dd>
-							<dd class="fr">
-								<a
-									target="_blank"
-									href="https://cby.familydoctor.com.cn/cby2023/cbyMedDetail/?objectId=410&amp;prizeId=840&amp;bangdanId=69"
-									>查看</a
-								>
-							</dd>
-						</dl>
-					</div>
-					<div class="bjp-box">
-						<dl>
-							<dt>
-								<img
-									src="https://img.familydoctor.com.cn/uploadimg/cbyhys/2023/11/20/09/0c5909ec8b0100001fab712813120000.jpeg"
-									alt=""
-								/>
-							</dt>
-							<dd class="med-info">
-								<p class="med-name">
-									<a
-										target="_blank"
-										href="https://cby.familydoctor.com.cn/cby2023/cbyMedDetail/?objectId=460&amp;prizeId=840&amp;bangdanId=undefined&amp;page=1"
-										>新概念<sup>®</sup>消毒产品</a
-									>
-								</p>
-								<p class="company">石家庄四药有限公司</p>
-							</dd>
-							<dd class="fr">
-								<a
-									target="_blank"
-									href="https://cby.familydoctor.com.cn/cby2023/cbyMedDetail/?objectId=460&amp;prizeId=840&amp;bangdanId=69"
-									>查看</a
-								>
-							</dd>
-						</dl>
-					</div>
+					{#each foodTypeList as item}
+						<div class="bjp-box">
+							<dl>
+								<dt>
+									<img
+										style="width: 100%;height: 100%;object-fit: cover;"
+										src="/images/meds/{item.imgSrc}"
+										alt={item.name}
+									/>
+								</dt>
+								<dd class="med-info">
+									<p class="med-name">
+										<a href="/desktop/cbyMed/{item.id}" target="_blank">{item.name}</a>
+									</p>
+									<p class="company">{item.factoryName}</p>
+								</dd>
+								<dd class="fr">
+									<a href="/desktop/cbyMed/{item.id}" target="_blank">查看</a>
+								</dd>
+							</dl>
+						</div>
+					{/each}
 				</div>
 			</div>
 		</div>
@@ -267,10 +133,7 @@
 	<div class="swhz-wrap mode-wrap js-nav-item" id="swhz">
 		<div class="common-inner">
 			<div class="wrap-title">
-				<img
-					src="images/tl_partner.jpg"
-					alt=""
-				/>
+				<img src="images/tl_partner.jpg" alt="" />
 			</div>
 			<div class="swhz-content">
 				<div class="card-box card-box-1">
@@ -320,10 +183,7 @@
 	</div>
 	<div class="mtzy-wrap js-nav-item" id="mtzy">
 		<h2 class="wrap-title">
-			<img
-				src="images/tl_reporter.jpg"
-				alt=""
-			/>
+			<img src="images/tl_reporter.jpg" alt="" />
 		</h2>
 		<div class="mtzy-content-wrap">
 			<div class="wrap-inner">

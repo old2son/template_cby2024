@@ -53,10 +53,6 @@
 		}
 	};
 
-	const test = () => {
-		console.log('test');
-	}
-
 	// navStore.subscribe((value) => {
 	// 	index = value;
 	// 	console.log(index);
@@ -108,4 +104,5 @@
 </div>
 
 <style lang="scss">
+	
 </style>
