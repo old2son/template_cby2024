@@ -1,7 +1,10 @@
 <script>
+	import { guide } from '$lib/data/guide.js';
 	import { medTypeList } from '$lib/data/medTypeList.js';
-	import { dailyTypeList } from '@src/lib/data/dailyTypeList.js';
+	import { dailyTypeList } from '$lib/data/dailyTypeList.js';
 	import { foodTypeList } from '$lib/data/foodTypeList.js';
+	import { contactPerson } from '$lib/data/contactPerson.js';
+	import { mediaBusiness, mediaNews, mediaNet } from '$lib/data/mediaList.js';
 	import GoTop from '@src/lib/components/GoTop.svelte';
 	import GoRank from '@src/lib/components/GoRank.svelte';
 </script>
@@ -17,12 +20,7 @@
 		</div>
 		<div class="hdjs-content wrap-content">
 			<div class="corner-box">
-				<p>
-					家庭常备药上榜品牌活动，是由家庭医生在线、新生代市场监测机构联合打造的聚焦我国家庭健康防护，助力医药企业高质量发展的年度品牌活动。该活动自2016年创办以来，在各大医药企业及消费者中有着极高的关注度和参与度。
-				</p>
-				<p>
-					今年起，更在“家庭常备药上榜品牌“基础上，延伸至”家庭常备保健食品上榜品牌“、”家庭常备医疗器械及消毒用品上榜品牌”，形成“三大榜单”，向广大老百姓倾力推出一份专业实用的家庭常备系列健康产品指南。
-				</p>
+				{@html guide}
 			</div>
 		</div>
 	</div>
@@ -136,48 +134,18 @@
 				<img src="images/tl_partner.jpg" alt="" />
 			</div>
 			<div class="swhz-content">
-				<div class="card-box card-box-1">
-					<div class="top-text">
-						刘先生
-						<i class="line-lt-long"></i>
-						<i class="line-lt-short"></i>
-						<i class="line-rt-long"></i>
-						<i class="line-rt-short"></i>
+				{#each contactPerson as item, index}
+					<div class="card-box card-box-{index % 4 + 1}">
+						<div class="top-text">
+							{item.name}
+							<i class="line-lt-long"></i>
+							<i class="line-lt-short"></i>
+							<i class="line-rt-long"></i>
+							<i class="line-rt-short"></i>
+						</div>
+						{@html item.cont}
 					</div>
-					<p>
-						电话：020-37617158/13432030367 <br />
-						QQ：1379476930 <br />
-						邮箱：liuxiannian@familydoctor.com.cn
-					</p>
-				</div>
-				<div class="card-box card-box-2">
-					<div class="top-text">
-						郎女士
-						<i class="line-lt-long"></i>
-						<i class="line-lt-short"></i>
-						<i class="line-rt-long"></i>
-						<i class="line-rt-short"></i>
-					</div>
-					<p>
-						电话：15013029327 微信：langlang705 <br />
-						QQ：790494927<br />
-						邮箱：langchenglin@familydoctor.com.cn
-					</p>
-				</div>
-				<div class="card-box card-box-4">
-					<div class="top-text">
-						彭先生
-						<i class="line-lt-long"></i>
-						<i class="line-lt-short"></i>
-						<i class="line-rt-long"></i>
-						<i class="line-rt-short"></i>
-					</div>
-					<p>
-						电话/微信：18820041981<br />
-						QQ：45257182 <br />
-						邮箱：pengzhimin@familydoctor.com.cn
-					</p>
-				</div>
+				{/each}
 			</div>
 		</div>
 	</div>
@@ -196,60 +164,9 @@
 						<i class="line-rt-short"></i>
 					</div>
 					<ul>
-						<li>
-							<img src="images/logo_media/medic/yyjjb.png" alt="" />
-						</li>
-						<li>
-							<img src="images/logo_media/medic/jkj.png" alt="" />
-						</li>
-						<li>
-							<img src="images/logo_media/medic/yxj.png" alt="" />
-						</li>
-						<li>
-							<img src="images/logo_media/medic/swg.png" alt="" />
-						</li>
-						<li>
-							<img src="images/logo_media/medic/yzw.png" alt="" />
-						</li>
-						<li>
-							<img src="images/logo_media/medic/yqs.png" alt="" />
-						</li>
-						<li>
-							<img src="images/logo_media/medic/dxy.png" alt="" />
-						</li>
-						<li>
-							<img src="images/logo_media/medic/39.png" alt="" />
-						</li>
-						<li>
-							<img src="images/logo_media/medic/dmw.png" alt="" />
-						</li>
-						<li>
-							<img src="images/logo_media/medic/qyw.png" alt="" />
-						</li>
-						<li>
-							<img src="images/logo_media/medic/xywy.png" alt="" />
-						</li>
-						<li>
-							<img src="images/logo_media/medic/dxt.png" alt="" />
-						</li>
-						<li>
-							<img src="images/logo_media/medic/yd.png" alt="" />
-						</li>
-						<li>
-							<img src="images/logo_media/medic/yyzt.png" alt="" />
-						</li>
-						<li>
-							<img src="images/logo_media/medic/sinayy.png" alt="" />
-						</li>
-						<li>
-							<img src="images/logo_media/medic/jkyx.png" alt="" />
-						</li>
-						<li>
-							<img src="images/logo_media/medic/kpzg.png" alt="" />
-						</li>
-						<li>
-							<img src="images/logo_media/medic/ygw.png" alt="" />
-						</li>
+						{#each mediaBusiness as item}
+							<li><img src="{item}" alt="行业图标"></li>
+						{/each}
 					</ul>
 				</div>
 				<div class="wrap-media wrap-media-2">
@@ -261,36 +178,9 @@
 						<i class="line-rt-short"></i>
 					</div>
 					<ul>
-						<li>
-							<img src="images/logo_media/news/rmrb.png" alt="" />
-						</li>
-						<li>
-							<img src="images/logo_media/news/ys.png" alt="" />
-						</li>
-						<li>
-							<img src="images/logo_media/news/xhw.png" alt="" />
-						</li>
-						<li>
-							<img src="images/logo_media/news/zxw.png" alt="" />
-						</li>
-						<li>
-							<img src="images/logo_media/news/nfrb.png" alt="" />
-						</li>
-						<li>
-							<img src="images/logo_media/news/ycwb.png" alt="" />
-						</li>
-						<li>
-							<img src="images/logo_media/news/gdws.png" alt="" />
-						</li>
-						<li>
-							<img src="images/logo_media/news/gzrb.png" alt="" />
-						</li>
-						<li>
-							<img src="images/logo_media/news/gzdst.png" alt="" />
-						</li>
-						<li>
-							<img src="images/logo_media/news/xxsb.png" alt="" />
-						</li>
+						{#each mediaNews as item}
+							<li><img src="{item}" alt="媒体图标"></li>
+						{/each}
 					</ul>
 				</div>
 				<div class="wrap-media wrap-media-3">
@@ -302,30 +192,9 @@
 						<i class="line-rt-short"></i>
 					</div>
 					<ul>
-						<li>
-							<img src="images/logo_media/net/fhw.png" alt="" />
-						</li>
-						<li>
-							<img src="images/logo_media/net/sina.png" alt="" />
-						</li>
-						<li>
-							<img src="images/logo_media/net/tt.png" alt="" />
-						</li>
-						<li>
-							<img src="images/logo_media/net/zaker.png" alt="" />
-						</li>
-						<li>
-							<img src="images/logo_media/net/ydzx.png" alt="" />
-						</li>
-						<li>
-							<img src="images/logo_media/net/txw.png" alt="" />
-						</li>
-						<li>
-							<img src="images/logo_media/net/wy.png" alt="" />
-						</li>
-						<li>
-							<img src="images/logo_media/net/sh.png" alt="" />
-						</li>
+						{#each mediaNet as item}
+							<li><img src="{item}" alt="媒体图标"></li>
+						{/each}
 					</ul>
 				</div>
 			</div>

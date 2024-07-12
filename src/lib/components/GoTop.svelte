@@ -33,10 +33,8 @@
 <svelte:window on:scroll={handler} />
 
 {#if visible}
-	<button
-		class="btn-gotop"
-		on:click={goTop}
-		transition:slide={{ duration: 200, axis: 'x' }}>返回顶端</button
+	<button class="btn-gotop" on:click={goTop} transition:slide={{ duration: 200, axis: 'x' }}
+		>返回顶端</button
 	>
 {/if}
 

@@ -2,7 +2,7 @@
 	<title>空白页</title>
 </svelte:head>
 
-<h1>列表缺少ID</h1>
+<h1>药品缺少ID</h1>
 
 <style lang="scss">
     h1 {
