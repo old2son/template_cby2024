@@ -146,7 +146,7 @@ body {
 
 .list-body,
 .med-body {
-	background: url(/images/bg_bottom_stars.jpg) center calc(100% - 150px) no-repeat #060807;
+	background: url(/images/bg_bottom_stars.jpg) center bottom no-repeat #060807;
 
 	.list-box {
 		padding: 35px 0;
@@ -154,7 +154,7 @@ body {
 }
 
 .list-body {
-	padding-bottom: 0px;
+	padding-bottom: 40px;
 
 	.list-box {
 		width: 1020px;
@@ -202,7 +202,7 @@ body {
 
 .nav-inner {
 	$height: 65px;
-	position: absolute;
+	position: fixed;
 	left: 0;
 	right: 0;
 	top: 0;
@@ -214,7 +214,6 @@ body {
 	background-color: rgba(#051b18, 0.8);
 
 	&.fixed {
-		position: fixed;
 		top: 0px;
 		z-index: 10;
 		background-color: #051b18;

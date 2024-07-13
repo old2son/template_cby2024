@@ -6,7 +6,6 @@
 	let fixed = false;
 	let wrap;	
 	let nav;	
-	let top = 0;
 
 	const urlData = [
 		{
@@ -86,7 +85,7 @@
 <svelte:window on:scroll={handler} />
 
 <div class="nav-wrap" bind:this={wrap}>
-	<div class="nav-inner" bind:this={nav} class:fixed style:top>
+	<div class="nav-inner" bind:this={nav} class:fixed >
 		<dl>
 			<dt class="js-nav-tabs">
 				{#each urlData as item}

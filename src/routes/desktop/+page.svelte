@@ -205,5 +205,9 @@
 	<GoRank />
 </div>
 
+<div class="bottom-img">
+	<img src="/images/bottom_sponsor.jpg" alt="主办机构">
+</div>
+
 <style lang="scss">
 </style>
