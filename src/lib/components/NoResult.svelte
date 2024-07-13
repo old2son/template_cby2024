@@ -7,7 +7,7 @@
 
 <dl class="bd-noresult js-bd-noresult">
 	<dt>
-		<img src="/images/bg_search_none.jpg" alt="" />
+		<img src="/images/bg_search_none.jpg" alt="没内容" />
 	</dt>
 	<dd>
 		<b>{title}</b>

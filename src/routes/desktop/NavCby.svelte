@@ -74,9 +74,10 @@
 				}
 
 			});
-
-			console.log(urlData);
 		}
+
+		const navItems = nav.querySelectorAll('.js-nav-item');
+		console.log(navItems);
 
 		handler();
 	});
