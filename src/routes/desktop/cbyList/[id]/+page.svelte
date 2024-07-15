@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
 	import { medList } from '$lib/data/medList.js';
+	import initMedNav from '@src/lib/scripts/initMedNav.js';
 	import NoResult from '@src/lib/components/NoResult.svelte';
 
 	let data = [];
@@ -39,6 +40,8 @@
 
 		// 手动触发数据更新
 		data = [...data];
+
+		initMedNav(data[0]?.data[0]?.campaignBdId || null);
 	});
 </script>
 

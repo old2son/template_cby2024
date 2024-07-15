@@ -2,7 +2,7 @@
 	export let title;
 	export let time;
 	export let msg;
-	export let remark;
+	export let remark = '';
 </script>
 
 <dl class="bd-noresult js-bd-noresult">
@@ -13,6 +13,6 @@
 		<b>{title}</b>
 		<p>{time}</p>
 		<p>{msg}</p>
-		{@html remark || ''}
+		{@html remark}
 	</dd>
 </dl>
