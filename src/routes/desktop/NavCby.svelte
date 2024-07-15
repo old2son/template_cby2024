@@ -83,7 +83,7 @@
 				data[0].url = 'javascript:void(0);';
 			} 
 			else {
-				item.url = item.url.replace('/desktop/', '');
+				index !== data.length - 1 ? (item.url = item.url.replace('/desktop/', '')) : '';
 			}
 
 			item.target = false;

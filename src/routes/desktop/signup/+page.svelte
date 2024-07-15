@@ -48,7 +48,6 @@
 	};
 
 	function validate(data) {
-		console.log(data);
 		if (!data.name.trim()) {
 			toastProps.message = '请输入公司名称';
 		}
@@ -209,6 +208,11 @@
 							class="btn-stufflist"
 							on:click={() => {
 								if (!rankId) {
+									toastProps.message = '未选择榜单类型';
+									toastProps.visible = true;
+									setTimeout(() => {
+										toastProps.visible = false;
+									}, 2000);
 									return;
 								}
 								isShowStuff = !isShowStuff;
@@ -235,7 +239,7 @@
 											on:click={() => {
 												isShowStuff = !isShowStuff;
 												stuffId = item.id;
-												stuffCont = item.name;
+												stuffCont = item.name
 											}}>{item.name}</button
 										>
 									</li>

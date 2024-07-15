@@ -17,6 +17,7 @@
 		position: fixed;
 		top: 50%;
 		left: 50%;
+		z-index: 10;
 		padding: 10px 20px;
 		border-radius: 5px;
 		transform: translate(-50%, -50%);
