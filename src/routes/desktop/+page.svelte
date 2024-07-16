@@ -1,9 +1,7 @@
 <script>
 	import { guide } from '$lib/data/guide.js';
-	import { medTypeList } from '$lib/data/medTypeList.js';
-	import { dailyTypeList } from '$lib/data/dailyTypeList.js';
-	import { foodTypeList } from '$lib/data/foodTypeList.js';
 	import { contactPerson } from '$lib/data/contactPerson.js';
+	import { medTypeList, dailyTypeList, foodTypeList } from '@src/lib/data/homeList.js';
 	import { mediaBusiness, mediaNews, mediaNet } from '$lib/data/mediaList.js';
 	import GoTop from '@src/lib/components/GoTop.svelte';
 	import GoRank from '@src/lib/components/GoRank.svelte';
@@ -73,7 +71,7 @@
 					<h2>家庭常备保健食品上榜品牌</h2>
 				</div>
 				<div class="bd-content">
-					{#each dailyTypeList as item}
+					{#each foodTypeList as item}
 						<div class="bjp-box">
 							<dl>
 								<dt>
@@ -102,7 +100,7 @@
 					<h2>家庭常备医疗器械及消毒用品上榜品牌</h2>
 				</div>
 				<div class="bd-content">
-					{#each foodTypeList as item}
+					{#each dailyTypeList as item}
 						<div class="bjp-box">
 							<dl>
 								<dt>

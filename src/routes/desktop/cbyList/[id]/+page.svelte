@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
-	import { medList } from '$lib/data/medList.js';
+	import { medList } from '@src/lib/data/medList.js';
 	import initMedNav from '@src/lib/scripts/initMedNav.js';
 	import NoResult from '@src/lib/components/NoResult.svelte';
 
@@ -31,15 +31,13 @@
 	});
 
 	onMount(async () => {
-		// 判断图片是否存在
 		if (data.length) {
 			for (const item of data[0].data) {
+				// 判断图片是否存在
 				item.product.imgSrc = await ensureImageExists(item.product.imgSrc);
 			}
 		}
-
-		// 手动触发数据更新
-		data = [...data];
+		data = [...data]; // 手动触发数据更新
 
 		initMedNav(data[0]?.data[0]?.campaignBdId || null);
 	});
