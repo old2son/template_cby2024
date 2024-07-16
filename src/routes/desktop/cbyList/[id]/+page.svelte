@@ -1,9 +1,10 @@
 <script>
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
-	import { medList } from '@src/lib/data/medList.js';
-	import initMedNav from '@src/lib/scripts/initMedNav.js';
-	import NoResult from '@src/lib/components/NoResult.svelte';
+	import { medList } from '$lib/data/medList.js';
+	import initMedNav from '$lib/scripts/initMedNav.js';
+	import ensureMedImageExists from '$lib/scripts/ensureMedImageExists.js';
+	import NoResult from '$lib/components/NoResult.svelte';
 
 	let data = [];
 
@@ -11,19 +12,6 @@
 		title: '空空如也',
 		time: '人气榜投选即将在11月开启',
 		msg: '敬请期待~'
-	};
-
-	const ensureImageExists = (imgSrc) => {
-		return new Promise((resolve) => {
-			const img = new Image();
-			img.src = `/images/meds/${imgSrc}`;
-			img.onload = () => {
-				resolve(imgSrc);
-			};
-			img.onerror = () => {
-				resolve('img_miss.jpg');
-			};
-		});
 	};
 
 	data = medList.filter((item) => {
@@ -34,7 +22,7 @@
 		if (data.length) {
 			for (const item of data[0].data) {
 				// 判断图片是否存在
-				item.product.imgSrc = await ensureImageExists(item.product.imgSrc);
+				item.product.imgSrc = await ensureMedImageExists(item.product.imgSrc);
 			}
 		}
 		data = [...data]; // 手动触发数据更新

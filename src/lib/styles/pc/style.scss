@@ -151,20 +151,6 @@ body {
 	.list-box {
 		padding: 35px 0;
 	}
-}
-
-.list-body {
-	padding-bottom: 40px;
-
-	.list-box {
-		width: 1020px;
-		padding: 0;
-		margin: 20px auto 40px;
-		overflow: hidden;
-		border: 2px solid #084637;
-		border-radius: 40px;
-		background-color: #0d231c;
-	}
 
 	.bd-noresult {
 		margin-bottom: 80px;
@@ -194,7 +180,22 @@ body {
 	}
 }
 
+.list-body {
+	padding-bottom: 40px;
+
+	.list-box {
+		width: 1020px;
+		padding: 0;
+		margin: 20px auto 40px;
+		overflow: hidden;
+		border: 2px solid #084637;
+		border-radius: 40px;
+		background-color: #0d231c;
+	}
+}
+
 .med-body {
+	height: 100%;
 	.meds-inner {
 		overflow: hidden;
 	}
@@ -1088,8 +1089,10 @@ body {
 			line-height: 60px;
 			margin: 25px auto;
 			border-radius: 40px;
+			cursor: pointer;
 			text-align: center;
 			color: #fedcb9;
+			font-size: 18px;
 			background-color: #0b3829;
 
 			i {
@@ -1114,6 +1117,7 @@ body {
 			padding: 0 45px;
 			line-height: 32px;
 			white-space: pre-wrap;
+			transition: all 0.2s linear;
 			color: #fff;
 			font-size: 20px;
 			font-family: 'microsoft yahei';
@@ -1124,7 +1128,9 @@ body {
 		}
 
 		.lock {
-			@include duoEllipsis(7);
+			max-height: 480px;
+			overflow: hidden;
+			// @include duoEllipsis(7);
 		}
 	}
 }
