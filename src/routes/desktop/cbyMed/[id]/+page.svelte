@@ -11,6 +11,11 @@
 	let isShowIntro = false;
 	let isShowReason = false;
 	let data;
+	let cpjsData = {
+		height: null,
+		sliceCont: null,
+		text: null
+	}
 
 	const NoResultMsg = {
 		title: '空空如也',
@@ -28,7 +33,11 @@
 		data[0].imgSrc = await ensureMedImageExists(data[0].imgSrc);
 		data = data[0];
 		await tick();
-		cpjsText = textEllipsis('.js-cpjs', 7)[0];
+		textEllipsis('.js-cpjs', 7).then((res) => {
+			cpjsData = {...cpjsData, ...res[0]}
+
+			
+		})
 	});
 	// initMedNav();
 </script>
@@ -76,13 +85,7 @@
 						</p>
 					</div>
 					<p class="cpjs-top">产品介绍</p>
-					<pre
-						class="cpjs js-cpjs"
-						data-text={cpjsText.text}
-						data-sliceCont={cpjsText.sliceCont}
-						data-height={cpjsText.height}
-                        style:height={isShowReason ? `${cpjsText.height}px` : '0'}}
-                        >{isShowReason ? cpjsText.text : cpjsText.sliceCont}</pre>
+					<pre class="cpjs js-cpjs">{data.introduction}</pre>
 					<button class="btn-show">点击展开<i class="down js-cpjs-down"></i></button>
 					<p class="sbly-top">
 						<em class="title">推荐理由</em>

@@ -38,7 +38,9 @@ function textEllipsis(eleClassName, num) {
 		formatStr(element);
 	});
 
-    return data;
+	return new Promise((resolve) => {
+		resolve(data);	
+	});
 }
 
 export default textEllipsis;
