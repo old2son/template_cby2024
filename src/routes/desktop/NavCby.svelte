@@ -1,5 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
+	import { page } from '$app/stores';
+	import { pushState, replaceState } from '$app/navigation';
 	import { navStore } from '$lib/stores/navStore.js';
 	import getOffsetTop from '$lib/utils/getOffsetTop.js';
 
@@ -68,7 +70,9 @@
 		// 滚动点亮
 		[].forEach.call(navItems, (item, i) => {
 			const height = getOffsetTop(item) - nav.offsetHeight - 30;
-			if (window.scrollY >= height) {
+			const bottom = item.getBoundingClientRect().bottom;
+			
+			if (window.scrollY >= height && bottom >= 0) {
 				index = i + 1;
 			}
 			else if (i === 0 && window.scrollY <= getOffsetTop(item) - nav.offsetHeight) {
@@ -107,13 +111,13 @@
 			if (dataIndex === 0) {
 				index = 0;
 				window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-				history.pushState('', '', '#');
+				pushState(`${$page.url.origin + $page.url.pathname}`);
 			}
 			else if (dataIndex === i + 1) {
 				index = i + 1;
 				const height = getOffsetTop(item) - nav.offsetHeight;
 				window.scrollTo({ top: height, left: 0, behavior: 'smooth' });
-				history.pushState('', '', target.getAttribute('href'));
+				pushState(`${$page.url.origin + $page.url.pathname + target.getAttribute('href')}`);
 			}
 		});
 		setTimeout(() => {
