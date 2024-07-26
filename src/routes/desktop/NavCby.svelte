@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import { navStore } from '$lib/stores/navStore.js';
 	import getOffsetTop from '$lib/utils/getOffsetTop.js';
+	import anime from '$lib/utils/anime.js';
 
 	let index = null;
 	let fixed = false;
@@ -134,6 +135,14 @@
 
 		navItems = document.querySelectorAll('.js-nav-item');
 		handler();
+
+		// test
+		anime({
+			targets: 'html, body',
+			scrollTop: 1000,
+			duration: 1000,
+			easing: 'easeInOutQuad'
+		});
 	});
 </script>
 
