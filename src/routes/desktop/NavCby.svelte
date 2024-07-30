@@ -1,5 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
+	import { page } from '$app/stores';
 	import { navStore } from '$lib/stores/navStore.js';
 	import getOffsetTop from '$lib/utils/getOffsetTop.js';
 	import anime from '$lib/utils/anime.js';
@@ -140,7 +141,7 @@
 		anime({
 			targets: 'html, body',
 			scrollTop: 1000,
-			duration: 1000,
+			duration: 350,
 			easing: 'easeInOutQuad'
 		});
 	});
