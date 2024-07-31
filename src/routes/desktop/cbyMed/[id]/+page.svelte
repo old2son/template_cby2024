@@ -35,8 +35,6 @@
 		await tick();
 		textEllipsis('.js-cpjs', 7).then((res) => {
 			cpjsData = {...cpjsData, ...res[0]}
-
-			
 		})
 	});
 	// initMedNav();
