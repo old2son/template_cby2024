@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
-	import { page } from '$app/stores';
-	import { pushState } from '$app/navigation';
+	import { getStores, navigating, page, updated } from '$app/stores';
+	import { pushState, replaceState } from '$app/navigation';
 	import { navStore } from '$lib/stores/navStore.js';
 	import getOffsetTop from '$lib/utils/getOffsetTop.js';
 	import anime from '$lib/utils/anime.js';
@@ -109,21 +109,30 @@
 		const target = e.target;
 		const dataIndex = parseInt(target.getAttribute('data-index'), 10);
 		Array.prototype.map.call(navItems, (item, i) => {
-			if (dataIndex === 0) {
+			if (dataIndex === 0 && i === 0) {
 				index = 0;
-				window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
 				pushState(`${$page.url.origin + $page.url.pathname}`);
+				anime({
+					targets: 'html, body',
+					scrollTop: 0,
+					duration: 350,
+					easing: 'easeInOutQuad'
+				});
 			}
 			else if (dataIndex === i + 1) {
 				index = i + 1;
-				const height = getOffsetTop(item) - nav.offsetHeight;
-				window.scrollTo({ top: height, left: 0, behavior: 'smooth' });
 				pushState(`${$page.url.origin + $page.url.pathname + target.getAttribute('href')}`);
+				anime({
+					targets: 'html, body',
+					scrollTop: getOffsetTop(document.querySelector(`#${item.id}`)),
+					duration: 350,
+					easing: 'easeInOutQuad'
+				});
 			}
 		});
 		setTimeout(() => {
 			click = false;
-		}, 650);
+		}, 400);
 	};
 
 	navStore.subscribe((value) => {
@@ -139,14 +148,6 @@
 
 		navItems = document.querySelectorAll('.js-nav-item');
 		handler();
-
-		// test
-		anime({
-			targets: 'html, body',
-			scrollTop: 1000,
-			duration: 350,
-			easing: 'easeInOutQuad'
-		});
 	});
 </script>
 
