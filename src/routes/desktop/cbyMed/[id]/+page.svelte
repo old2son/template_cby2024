@@ -37,19 +37,18 @@
 
 	onMount(async () => {
 		loadingMsg.visible = false;
-		
 		if (!data.length) { 
 			return;
 		}
-
-		loadingMsg.visible = false;
 
 		initMedNav(data[0]?.campaignBdId || null);
 		data[0].imgSrc = await ensureMedImageExists(data[0].imgSrc);
 		data = data[0];
 		await tick();
 		textEllipsis('.js-cpjs', 7).then((res) => {
+			console.log(res)
 			cpjsData = {...cpjsData, ...res[0]}
+			console.log(cpjsData)
 		})
 	});
 
@@ -99,6 +98,8 @@
 					</div>
 					<p class="cpjs-top">产品介绍</p>
 					<pre class="cpjs js-cpjs">{data.introduction}</pre>
+					<div style="color: #fff;">==================================================</div>
+					<pre class="cpjs js-cpjs">{cpjsData.sliceCont}</pre>
 					<button class="btn-show">点击展开<i class="down js-cpjs-down"></i></button>
 					<p class="sbly-top">
 						<em class="title">推荐理由</em>
