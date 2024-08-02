@@ -1,13 +1,13 @@
 <script>
 	import { fade } from 'svelte/transition';
-    import { elastic } from 'svelte/easing';
+    import { backOut } from 'svelte/easing';
     
-	export let message = '';
+	export let message = '加载中';
 	export let visible = false;
 </script>
 
 {#if visible}
-	<div class="loading" transition:fade={{ delay: 100, duration: 250, easing: elastic }}>
+	<div class="loading" transition:fade={{ delay: 100, duration: 250, easing: backOut }}>
 		{message}
 	</div>
 	<div class="mask"></div>

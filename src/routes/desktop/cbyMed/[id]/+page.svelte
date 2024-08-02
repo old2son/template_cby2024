@@ -7,7 +7,7 @@
 	import ensureMedImageExists from '$lib/scripts/ensureMedImageExists.js';
 	import NoResult from '$lib/components/NoResult.svelte';
 	import textEllipsis from '$lib/utils/textEllipsis.js';
-	import Loading from '@src/lib/components/Loading.svelte';
+	import Loading from '$lib/components/Loading.svelte';
 
 	let isShowIntro = false;
 	let isShowReason = false;
@@ -25,11 +25,10 @@
 	};
 
 	const loadingMsg = {
-		msg: '正在加载中',
+		msg: '正在加载药品中',
 		visible: true
 	}
 	
-
 	let cpjsText = {};
 
 	data = med.filter((item) => {
@@ -108,7 +107,7 @@
 				</div>
 			</div>
 		{:else}
-			<!-- <Loading message="{loadingMsg.msg}" visible={loadingMsg.visible}/> -->
+			<Loading message="{loadingMsg.msg}" visible={loadingMsg.visible}/>
 			<NoResult {...resultMsg} />
 		{/if}
 	</div>

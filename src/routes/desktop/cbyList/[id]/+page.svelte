@@ -5,6 +5,7 @@
 	import initMedNav from '$lib/scripts/initMedNav.js';
 	import ensureMedImageExists from '$lib/scripts/ensureMedImageExists.js';
 	import NoResult from '$lib/components/NoResult.svelte';
+	import Loading from '$lib/components/Loading.svelte';
 
 	let data = [];
 
@@ -14,15 +15,24 @@
 		msg: '敬请期待~'
 	};
 
+	const loadingMsg = {
+		msg: '正在加载列表中',
+		visible: true
+	}
+
 	data = medList.filter((item) => {
 		return item.id === parseInt($page.params.id, 10);
 	});
 
 	onMount(async () => {
+		loadingMsg.visible = false;
+
 		if (!data.length) {
 			return;
 		}
+
 		initMedNav(data[0]?.data[0]?.campaignBdId || null);
+		
 		for (const item of data[0].data) {
 			item.product.imgSrc = await ensureMedImageExists(item.product.imgSrc); // 判断图片是否存在
 		}
@@ -71,6 +81,7 @@
 			</div>
 		</div>
 	{:else}
+		<Loading message="{loadingMsg.msg}" visible={loadingMsg.visible}/>
 		<NoResult {...NoResultMsg} />
 	{/if}
 
