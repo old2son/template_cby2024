@@ -97,7 +97,7 @@
 
 	// 点击点亮
 	const scrollFn = (e) => {
-		if (window.location.pathname === '/desktop') {
+		if ($page.url.pathname === '/desktop') {
 			e.preventDefault();
 		}
 
@@ -124,7 +124,7 @@
 				pushState(`${$page.url.origin + $page.url.pathname + target.getAttribute('href')}`);
 				anime({
 					targets: 'html, body',
-					scrollTop: getOffsetTop(document.querySelector(`#${item.id}`)),
+					scrollTop: getOffsetTop(document.querySelector(`#${item.id}`)) - (nav.offsetHeight + 20),
 					duration: 350,
 					easing: 'easeInOutQuad'
 				});
@@ -135,19 +135,33 @@
 		}, 400);
 	};
 
+	const onceScroll = () => {
+		if (!$page.url.hash) {
+			return;
+		}
+		
+		anime({
+			targets: 'html, body',
+			scrollTop: getOffsetTop(document.querySelector($page.url.hash)) - (nav.getBoundingClientRect().height + 20),
+			duration: 350,
+			easing: 'easeInOutQuad'
+		});
+	};
+
 	navStore.subscribe((value) => {
 		index = value;
 	});
 
 	onMount(() => {
-		if (window.location.pathname === '/desktop') {
-			replaceUrl(urlData);
-		}
 		urlData = [...urlData];
 		top = 0;
-
 		navItems = document.querySelectorAll('.js-nav-item');
-		handler();
+	
+		if ($page.url.pathname === '/desktop') {
+			replaceUrl(urlData);
+			onceScroll();
+			handler();
+		}
 	});
 </script>
 

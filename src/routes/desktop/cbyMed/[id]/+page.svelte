@@ -7,6 +7,7 @@
 	import ensureMedImageExists from '$lib/scripts/ensureMedImageExists.js';
 	import NoResult from '$lib/components/NoResult.svelte';
 	import textEllipsis from '$lib/utils/textEllipsis.js';
+	import Loading from '@src/lib/components/Loading.svelte';
 
 	let isShowIntro = false;
 	let isShowReason = false;
@@ -17,11 +18,17 @@
 		text: null
 	}
 
-	const NoResultMsg = {
+	const resultMsg = {
 		title: '空空如也',
 		time: '人气榜投选即将在11月开启',
 		msg: '敬请期待~'
 	};
+
+	const loadingMsg = {
+		msg: '正在加载中',
+		visible: true
+	}
+	
 
 	let cpjsText = {};
 
@@ -30,6 +37,15 @@
 	});
 
 	onMount(async () => {
+		loadingMsg.visible = false;
+		
+		if (!data.length) { 
+			return;
+		}
+
+		loadingMsg.visible = false;
+
+		initMedNav(data[0]?.campaignBdId || null);
 		data[0].imgSrc = await ensureMedImageExists(data[0].imgSrc);
 		data = data[0];
 		await tick();
@@ -37,7 +53,7 @@
 			cpjsData = {...cpjsData, ...res[0]}
 		})
 	});
-	// initMedNav();
+
 </script>
 
 <div class="med-body">
@@ -92,9 +108,14 @@
 				</div>
 			</div>
 		{:else}
-			<NoResult {...NoResultMsg} />
+			<!-- <Loading message="{loadingMsg.msg}" visible={loadingMsg.visible}/> -->
+			<NoResult {...resultMsg} />
 		{/if}
 	</div>
 </div>
 
-<style lang="scss"></style>
+<style lang="scss">
+	/* :global(.loading) {
+    	color: #fff;
+  	} */
+</style>

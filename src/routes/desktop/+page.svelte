@@ -76,7 +76,6 @@
 							<dl>
 								<dt>
 									<img
-										style="width: 100%;height: 100%;object-fit: cover;"
 										src="/images/meds/{item.imgSrc}"
 										alt={item.name}
 									/>
@@ -105,7 +104,6 @@
 							<dl>
 								<dt>
 									<img
-										style="width: 100%;height: 100%;object-fit: cover;"
 										src="/images/meds/{item.imgSrc}"
 										alt={item.name}
 									/>

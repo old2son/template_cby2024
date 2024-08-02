@@ -19,15 +19,14 @@
 	});
 
 	onMount(async () => {
-		if (data.length) {
-			for (const item of data[0].data) {
-				// 判断图片是否存在
-				item.product.imgSrc = await ensureMedImageExists(item.product.imgSrc);
-			}
+		if (!data.length) {
+			return;
+		}
+		initMedNav(data[0]?.data[0]?.campaignBdId || null);
+		for (const item of data[0].data) {
+			item.product.imgSrc = await ensureMedImageExists(item.product.imgSrc); // 判断图片是否存在
 		}
 		data = [...data]; // 手动触发数据更新
-
-		initMedNav(data[0]?.data[0]?.campaignBdId || null);
 	});
 </script>
 
@@ -50,12 +49,8 @@
 					<div class="med-box">
 						<dl>
 							<dt>
-								<a target="_blank" href="/desktop/cbyMed/{item.id}" style="height: 100%;"
-									><img
-										style="width: 100%;height: 100%;object-fit: cover;"
-										src="/images/meds/{item.product.imgSrc}"
-										alt={item.product.name}
-									/></a
+								<a target="_blank" href="/desktop/cbyMed/{item.id}"
+									><img src="/images/meds/{item.product.imgSrc}" alt={item.product.name} /></a
 								>
 							</dt>
 							<dd class="med-info">
