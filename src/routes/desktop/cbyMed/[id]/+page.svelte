@@ -1,22 +1,24 @@
 <script>
 	import { onMount, tick } from 'svelte';
-	import { fade } from 'svelte/transition';
+	import { fade, slide } from 'svelte/transition';
 	import { page } from '$app/stores';
 	import { med } from '$lib/data/med.js';
 	import initMedNav from '$lib/scripts/initMedNav.js';
 	import ensureMedImageExists from '$lib/scripts/ensureMedImageExists.js';
 	import NoResult from '$lib/components/NoResult.svelte';
-	import textEllipsis from '$lib/utils/textEllipsis.js';
 	import Loading from '$lib/components/Loading.svelte';
 
 	let isShowIntro = false;
 	let isShowReason = false;
 	let data;
+	let cpjsEle;
 	let cpjsData = {
-		height: null,
-		sliceCont: null,
-		text: null
-	}
+		cont: '',
+		sliceCont: '',
+		height: 'auto',
+		sliceHeight: 'auto',
+		isShow: true
+	};
 
 	const resultMsg = {
 		title: '空空如也',
@@ -27,9 +29,56 @@
 	const loadingMsg = {
 		msg: '正在加载药品中',
 		visible: true
-	}
-	
-	let cpjsText = {};
+	};
+
+	const textEllipsis = (eleClassName, num) => {
+		const data = [];
+		const eles = document.querySelectorAll(eleClassName);
+		const formatStr = (ele) => {
+			const cont = ele.innerHTML;
+			const totalTextLen = cont.length;
+			const lineNum = num || 3;
+			const baseWidth = window.getComputedStyle(ele).width;
+			const baseFontSize = window.getComputedStyle(ele).fontSize;
+			const lineWidth = +baseWidth.slice(0, -2); // 去除单位
+			const height = ele.offsetHeight; // 返回原始高度
+			const viewState = {
+				cont: '',
+				sliceCont: '',
+				height: 'auto',
+				isShow: true
+			};
+
+			const strNum = Math.floor(lineWidth / +baseFontSize.slice(0, -2));
+
+			let sliceCont = '';
+
+			const totalStrNum = Math.floor(strNum * lineNum);
+
+			const lastIndex = totalStrNum - totalTextLen;
+
+			// pre 识别回车，无法准确裁切
+			if (totalTextLen > totalStrNum) {
+				viewState.isShow = false;
+				sliceCont = cont.slice(0, lastIndex - 3).concat('...');
+			} else {
+				sliceCont = cont;
+			}
+
+			viewState.cont = cont;
+			viewState.sliceCont = sliceCont;
+			viewState.height = height;
+			data.push(viewState);
+		};
+
+		eles.forEach(function (element) {
+			formatStr(element);
+		});
+
+		return new Promise((resolve) => {
+			resolve(data);
+		});
+	};
 
 	data = med.filter((item) => {
 		return item.id === parseInt($page.params.id, 10);
@@ -37,7 +86,7 @@
 
 	onMount(async () => {
 		loadingMsg.visible = false;
-		if (!data.length) { 
+		if (!data.length) {
 			return;
 		}
 
@@ -45,13 +94,15 @@
 		data[0].imgSrc = await ensureMedImageExists(data[0].imgSrc);
 		data = data[0];
 		await tick();
-		textEllipsis('.js-cpjs', 7).then((res) => {
-			console.log(res)
-			cpjsData = {...cpjsData, ...res[0]}
-			console.log(cpjsData)
-		})
-	});
+		textEllipsis('.js-cpjs', 7).then(async (res) => {
+			cpjsData = res[0];
 
+			await tick();
+			if (!cpjsData.isShow) {
+				cpjsData.sliceHeight = cpjsEle.scrollHeight;
+			}
+		});
+	});
 </script>
 
 <div class="med-body">
@@ -97,10 +148,27 @@
 						</p>
 					</div>
 					<p class="cpjs-top">产品介绍</p>
-					<pre class="cpjs js-cpjs">{data.introduction}</pre>
-					<div style="color: #fff;">==================================================</div>
-					<pre class="cpjs js-cpjs">{cpjsData.sliceCont}</pre>
-					<button class="btn-show">点击展开<i class="down js-cpjs-down"></i></button>
+					<pre
+						class="cpjs js-cpjs"
+						bind:this={cpjsEle}
+						style:height={cpjsData.isShow
+							? cpjsData.height + 'px'
+							: cpjsData.sliceHeight + 'px'}>{cpjsData.isShow
+							? data.introduction
+							: cpjsData.sliceCont}</pre>
+					{#if cpjsData.sliceCont}
+						<button
+							class="btn-show"
+							on:click={(e) => {
+								const target = e.target;
+								cpjsData.isShow = !cpjsData.isShow;
+							}}
+							>{cpjsData.isShow ? '点击收起' : '点击展开'}<i
+								class="js-cpjs-down"
+								class:on={cpjsData.isShow}
+							></i></button
+						>
+					{/if}
 					<p class="sbly-top">
 						<em class="title">推荐理由</em>
 					</p>
@@ -108,7 +176,7 @@
 				</div>
 			</div>
 		{:else}
-			<Loading message="{loadingMsg.msg}" visible={loadingMsg.visible}/>
+			<Loading message={loadingMsg.msg} visible={loadingMsg.visible} />
 			<NoResult {...resultMsg} />
 		{/if}
 	</div>

@@ -1050,7 +1050,7 @@ body {
 
 		.box-msg-basic {
 			padding: 15px 25px;
-			margin: 10px 20px 20px;
+			margin: 10px 20px 0px;
 			background-color: #0b3829;
 			border-radius: 20px;
 		}
@@ -1082,7 +1082,7 @@ body {
 		.cpjs-top,
 		.sbly-top {
 			padding: 0 45px;
-			margin-bottom: 10px;
+			margin: 25px auto 10px;
 			color: #fedcb9;
 		}
 
@@ -1091,7 +1091,7 @@ body {
 			width: 568px;
 			height: 60px;
 			line-height: 60px;
-			margin: 25px auto;
+			margin: 25px auto 0;
 			border-radius: 40px;
 			cursor: pointer;
 			text-align: center;
@@ -1104,15 +1104,13 @@ body {
 				margin-left: 5px;
 				width: 18px;
 				height: 12px;
+				transition: all 0.2s linear;
+				background: url(/images/icon_up_down.png) center bottom no-repeat;
 				@include IE7inlineblock;
 			}
 
-			.down {
-				background: url(/images/icon_up_down.png) center bottom no-repeat;
-			}
-
-			.up {
-				background: url(/images/icon_up_down.png) center top no-repeat;
+			.on {
+				transform: rotate(180deg);
 			}
 		}
 
