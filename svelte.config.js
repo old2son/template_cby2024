@@ -13,11 +13,20 @@ const config = {
 			strict: true
 		}),
 		alias: {
-            '@src': 'src',
-        },
-		files: {
-			lib: 'src/lib',
+			'@src': 'src'
 		},
+		files: {
+			lib: 'src/lib'
+		},
+		prerender: {
+			handleHttpError: ({ status, path, referrer, referenceType }) => {
+				if (status === 403) {
+					console.log(`Error: ${status} on ${path}`);
+					return;
+				}
+				console.error(`Error: ${status} on ${path}`);
+			}
+		}
 	}
 };
 

@@ -1,6 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import { slide } from 'svelte/transition';
+	import anime from '$lib/utils/anime.js';
 
 	export let distanceY = 300;
 
@@ -11,10 +12,12 @@
 			return;
 		}
 		flag = true;
-		window.scrollTo({
-			top: 0,
-			left: 0,
-			behavior: 'smooth'
+		
+		anime({
+			targets: 'html, body',
+			scrollTop: 0,
+			duration: 200,
+			easing: 'easeInOutQuad'
 		});
 	};
 	const handler = () => {
