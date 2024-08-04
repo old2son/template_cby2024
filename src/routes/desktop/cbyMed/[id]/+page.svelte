@@ -107,11 +107,11 @@
 
 <div class="med-body">
 	<div class="top-banner">
-		<img src="/images/banner_secondary.jpg" alt="常备药头图" />
+		<img src="/images/pc/banner_secondary.jpg" alt="常备药头图" />
 	</div>
 
 	<div class="wrap-title">
-		<img src="/images/tl_rank_active.jpg" alt="常备药榜标题" />
+		<img src="/images/pc/tl_rank_active.jpg" alt="常备药榜标题" />
 	</div>
 
 	<div class="meds-inner">

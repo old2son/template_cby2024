@@ -81,12 +81,12 @@
 
 <div class="sign-up-wrap">
 	<div class="top-banner">
-		<img src="/images/banner_secondary.jpg" alt="常备药头图" />
+		<img src="/images/pc/banner_secondary.jpg" alt="常备药头图" />
 	</div>
 
 	<div class="sign-up-inner">
 		<div class="wrap-title">
-			<img src="/images/tl_signup.jpg" alt="报名标题" />
+			<img src="/images/pc/tl_signup.jpg" alt="报名标题" />
 		</div>
 		<div class="sign-up-cont">
 			<div class="msg-com">

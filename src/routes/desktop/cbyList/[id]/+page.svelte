@@ -42,11 +42,11 @@
 
 <div class="list-body">
 	<div class="top-banner">
-		<img src="/images/banner_secondary.jpg" alt="常备药头图" />
+		<img src="/images/pc/banner_secondary.jpg" alt="常备药头图" />
 	</div>
 
 	<div class="wrap-title">
-		<img src="/images/tl_rank_active.jpg" alt="上榜标题图" />
+		<img src="/images/pc/tl_rank_active.jpg" alt="上榜标题图" />
 	</div>
 
 	{#if data.length}

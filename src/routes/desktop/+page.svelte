@@ -8,13 +8,13 @@
 </script>
 
 <div class="top-banner">
-	<img src="/images/banner_main.jpg" alt="常备药头图" />
+	<img src="/images/pc/banner_main.jpg" alt="常备药头图" />
 </div>
 
 <div class="content-body">
 	<div class="hdjs-wrap mode-wrap js-nav-item" id="hdjs">
 		<div class="wrap-title">
-			<img src="images/tl_intro.png" alt="" />
+			<img src="/images/pc/tl_intro.png" alt="" />
 		</div>
 		<div class="hdjs-content wrap-content">
 			<div class="corner-box">
@@ -53,7 +53,7 @@
 	</div>
 	<div class="jxsz-wrap mode-wrap">
 		<div class="wrap-title">
-			<img src="images/tl_rank.jpg" alt="" />
+			<img src="/images/pc/tl_rank.jpg" alt="" />
 		</div>
 		<div class="jxsz-content wrap-content">
 			<div class="jxsz-corner jxsz-bd js-list-drug js-nav-item" id="cbyb">
@@ -127,7 +127,7 @@
 	<div class="swhz-wrap mode-wrap js-nav-item" id="swhz">
 		<div class="common-inner">
 			<div class="wrap-title">
-				<img src="images/tl_partner.jpg" alt="" />
+				<img src="/images/pc/tl_partner.jpg" alt="" />
 			</div>
 			<div class="swhz-content">
 				{#each contactPerson as item, index}
@@ -147,7 +147,7 @@
 	</div>
 	<div class="mtzy-wrap js-nav-item" id="mtzy">
 		<h2 class="wrap-title">
-			<img src="images/tl_reporter.jpg" alt="" />
+			<img src="/images/pc/tl_reporter.jpg" alt="" />
 		</h2>
 		<div class="mtzy-content-wrap">
 			<div class="wrap-inner">
@@ -202,7 +202,7 @@
 </div>
 
 <div class="bottom-img">
-	<img src="/images/bottom_sponsor.jpg" alt="主办机构">
+	<img src="/images/pc/bottom_sponsor.jpg" alt="主办机构">
 </div>
 
 <style lang="scss">
