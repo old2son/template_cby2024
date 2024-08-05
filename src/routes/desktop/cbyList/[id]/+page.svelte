@@ -40,6 +40,10 @@
 	});
 </script>
 
+<svelte:head>
+	<title>常备药列表-{data[0]?.title || ''}</title>
+</svelte:head>
+
 <div class="list-body">
 	<div class="top-banner">
 		<img src="/images/pc/banner_secondary.jpg" alt="常备药头图" />

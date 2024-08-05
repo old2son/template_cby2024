@@ -15,44 +15,45 @@
 	
 	let urlData = [
 		{
-			name: '专题<br>首页',
-			url: '/m/',
+			name: '活动<br>介绍',
+			class: 'nav-intro',
+			url: '/m/#hdjs',
 			target: false
 		},
 		{
-			name: '活动<br>介绍',
-			url: '/m/#hdjs',
-			target: true
-		},
-		{
 			name: '常备<br>药榜',
+			class: 'nav-drug',
 			url: '/m/#cbyb',
-			target: true
+			target: false
 		},
 		{
 			name: '保健<br>食品榜',
+			class: 'nav-food',
 			url: '/m/#bjsp',
-			target: true
+			target: false
 		},
 		{
 			name: '医疗器械<br>消毒用品',
+			class: 'nav-equip',
 			url: '/m/#ylqx',
-			target: true
+			target: false
 		},
 		{
 			name: '商务<br>合作',
+			class: 'nav-partner',
 			url: '/m/#swhz',
-			target: true
+			target: false
 		},
 		{
 			name: '媒体<br>资源',
+			class: 'nav-reporter',
 			url: '/m/#mtzy',
-			target: true
+			target: false
 		},
 	];
 
 	const handler = () => {
-		if (window.scrollY > nav.offsetHeight) {
+		if (window.scrollY > getOffsetTop(nav.parentNode)) {
 			fixed = true;
 		} 
 		else {
@@ -69,24 +70,14 @@
 			const bottom = item.getBoundingClientRect().bottom;
 			
 			if (window.scrollY >= height && bottom >= 0) {
-				index = i + 1;
-			}
-			else if (i === 0 && window.scrollY <= getOffsetTop(item) - nav.offsetHeight) {
-				index = 0;
+				index = i;
 			}
 		});
 	};
 
 	const replaceUrl = (data) => {
 		data.map((item, index) => {
-			if (index === 0) {
-				data[0].url = 'javascript:void(0);';
-			} 
-			else {
-				index !== data.length - 1 ? (item.url = item.url.replace('/m/', '')) : '';
-			}
-
-			item.target = false;
+			index !== data.length - 1 ? (item.url = item.url.replace('/m/', '')) : '';
 		});
 	};
 
@@ -134,7 +125,7 @@
 		if (!$page.url.hash) {
 			return;
 		}
-		
+
 		anime({
 			targets: 'html, body',
 			scrollTop: getOffsetTop(document.querySelector($page.url.hash)) - (nav.getBoundingClientRect().height + 20),
@@ -163,17 +154,16 @@
 <svelte:window on:scroll={handler} />
 
 <div class="top-nav-wrap">
-    <div class="js-nav top-nav-inner">
+    <div class="js-nav top-nav-inner" bind:this={nav} class:fixed>
 		{#each urlData as item, i}
-			{#if item.url !== urlData[urlData.length - 1].url}
-				<a
-					target={item.target ? '_blank' : '_self'}
-					href={item.url}
-					class:on={index === i}
-					data-index={i}
-					on:click={scrollFn}><em>{@html item.name}</em></a
-				>
-			{/if}
+			<a
+				target={item.target ? '_blank' : '_self'}
+				href={item.url}
+				class="{item.class}"
+				class:on={index === i}
+				data-index={i}
+				on:click={scrollFn}><em>{@html item.name}</em></a
+			>
 		{/each}
     </div>
 </div>

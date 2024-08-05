@@ -105,10 +105,6 @@
 	});
 </script>
 
-<svelte:head>
-	<title>常备药-{data?.name}</title>
-</svelte:head>
-
 <div class="med-body">
 	<div class="top-banner">
 		<img src="/images/pc/banner_secondary.jpg" alt="常备药头图" />

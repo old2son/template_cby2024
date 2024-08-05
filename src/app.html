@@ -10,4 +10,19 @@
 	<body data-sveltekit-preload-data="hover">
 		<div class="cby2024" id="js-cby2024">%sveltekit.body%</div>
 	</body>
+	<script>
+		(function fontResize() {
+			const isMobile = /iPhone|iPod|Android|ios|symbian|rv:1.2.3.4|ucweb|Windows Phone/i.test(navigator.userAgent);
+
+			if (!isMobile) {
+				return;
+			}
+
+			const html = document.documentElement;
+			let hWidth = html.getBoundingClientRect().width;
+			hWidth = hWidth >= 750 ? 750 : hWidth;
+			html.style.fontSize = hWidth / 30 + 'px';
+			window.onresize = fontResize;
+		})();
+	</script>
 </html>

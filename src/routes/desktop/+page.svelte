@@ -1,11 +1,15 @@
 <script>
 	import { guide } from '$lib/data/guide.js';
 	import { contactPerson } from '$lib/data/contactPerson.js';
-	import { medTypeList, dailyTypeList, foodTypeList } from '@src/lib/data/homeList.js';
+	import { medTypeList, dailyTypeList, foodTypeList } from '$lib/data/homeList.js';
 	import { mediaBusiness, mediaNews, mediaNet } from '$lib/data/mediaList.js';
-	import GoTop from '@src/lib/components/GoTop.svelte';
-	import GoRank from '@src/lib/components/GoRank.svelte';
+	import GoTop from '$lib/components/GoTop.svelte';
+	import GoRank from '$lib/components/GoRank.svelte';
 </script>
+
+<svelte:head>
+	<title>首页</title>
+</svelte:head>
 
 <div class="top-banner">
 	<img src="/images/pc/banner_main.jpg" alt="常备药头图" />
@@ -205,5 +209,4 @@
 	<img src="/images/pc/bottom_sponsor.jpg" alt="主办机构">
 </div>
 
-<style lang="scss">
-</style>
+<style lang="scss"></style>
