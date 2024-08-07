@@ -27,7 +27,7 @@
 </script>
 
 <svelte:window on:scroll={handler} />
-<a class="btn-back" bind:this={btnGoHome} href="/m">返回首页</a>
+<a class="btn-back-home" bind:this={btnGoHome} href="/m">返回首页</a>
 
 <style>
 </style>

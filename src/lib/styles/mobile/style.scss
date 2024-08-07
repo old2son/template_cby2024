@@ -510,7 +510,7 @@ body {
     }
 }
 
-.btn-back {
+.btn-back-home {
     display: block;
     position: absolute;
     top: -50px;
@@ -528,23 +528,8 @@ body {
     }
 }
 
-.btn-back2 {
-    a {
-        width: pxtorem(120);
-        padding: pxtorem(5) pxtorem(25);
-        background-position: 90% center;
-        background-size: pxtorem(18);
-        text-align: center;
-        background-color: rgba(#060807, 0.6);
-        position: fixed;
-        top: 70%;
-        right: 0;
-        border-top-left-radius: 40px;
-        border-bottom-left-radius: 40px;
-        font-size: pxtorem(27);
-        color: #f7eae1;
-    }
-
+.btn-back {
+    @extend .btn-back-home;
 }
 
 .btn-signup {
@@ -1524,6 +1509,8 @@ footer {
 
 //药品详情页开始
 .cbyp-med {
+    min-height: 100%;
+    overflow: hidden;
     background: #060807 url(/images/mobile/banner_secondary.jpg) top center no-repeat;
     background-size: pxtorem(750);
 }
@@ -1716,6 +1703,7 @@ footer {
         bottom: pxtorem(20);
         width: pxtorem(658);
         line-height: pxtorem(88);
+        border: 0;
         border-radius: pxtorem(100);
         transform: translate(-50%, 0);
         color: #362e2b;
@@ -1900,79 +1888,6 @@ footer {
     }
 }
 
-.dialog-success,
-.dialog-failure {
-    position: relative;
-    width: pxtorem(560);
-    height: pxtorem(612);
-    padding: pxtorem(0) pxtorem(30) 0;
-    margin: 0 auto;
-    border: 1px solid #fedcb9;
-    border-radius: pxtorem(30);
-    text-align: center;
-    background-color: #0e231c;
-
-    .tips {
-        margin: pxtorem(40) 0 pxtorem(250);
-        text-align: center;
-        color: #fedcb9;
-        font-weight: bold;
-        font-size: pxtorem(45);
-    }
-
-    p {
-        line-height: pxtorem(36);
-        text-align: center;
-        color: #fff;
-        font-size: pxtorem(22.5);
-    }
-
-    a {
-        display: block;
-        width: pxtorem(180);
-        line-height: pxtorem(70);
-        margin: pxtorem(20) auto;
-        text-align: center;
-        color: #330000;
-        font-size: pxtorem(27);
-        font-weight: bold;
-        background: url(/images/mobile/btn_vote.png) center no-repeat;
-        background-size: 100% 100%;
-    }
-}
-
-.dialog-success {
-    &::after {
-        position: absolute;
-        top: pxtorem(110);
-        left: 50%;
-        content: '';
-        width: pxtorem(369);
-        height: pxtorem(242);
-        transform: translateX(-50%);
-        background: url(/images/mobile/bg_signup_success.jpg) center no-repeat;
-        background-size: 100%;
-    }
-}
-
-.dialog-failure {
-    &::after {
-        position: absolute;
-        top: pxtorem(110);
-        left: 50%;
-        content: '';
-        width: pxtorem(381);
-        height: pxtorem(242);
-        transform: translateX(-50%);
-        background: url(/images/mobile/bg_signup_fail.jpg) center no-repeat;
-        background-size: 100%;
-    }
-}
-
-.fd-dialog {
-    background-color: unset;
-}
-
 .dia-cont {
     padding: 0 !important;
 }
@@ -2038,14 +1953,5 @@ footer {
         height: pxtorem(70);
         background: url(/images/mobile/icon-close.png) no-repeat center;
         background-size: pxtorem(70);
-    }
-}
-
-.dialog {
-    text-align: center;
-    color: black;
-
-    p {
-        color: #fff;
     }
 }

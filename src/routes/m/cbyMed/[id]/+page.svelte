@@ -3,13 +3,17 @@
 	import { fade, slide } from 'svelte/transition';
 	import { page } from '$app/stores';
 	import { med } from '$lib/data/med.js';
+	import { get } from 'svelte/store';
+	import { voteStore } from '$lib/stores/voteStore.js';
 	import initMedNav from '$lib/scripts/initMedNav.js';
 	import ensureMedImageExists from '$lib/scripts/ensureMedImageExists.js';
 	import NoResult from '$lib/components/NoResult.svelte';
 	import Loading from '$lib/components/Loading.svelte';
 
+	let href = '';
 	let isShowIntro = false;
 	let isShowReason = false;
+	let isVote = true;
 	let data;
 	let cpjsEle;
 	let cpjsData = {
@@ -93,97 +97,77 @@
 		initMedNav(data[0]?.campaignBdId || null);
 		data[0].imgSrc = await ensureMedImageExists(data[0].imgSrc);
 		data = data[0];
-		await tick();
-		textEllipsis('.js-cpjs', 7).then(async (res) => {
-			cpjsData = res[0];
+		// await tick();
+		// textEllipsis('.js-cpjs', 7).then(async (res) => {
+		// 	cpjsData = res[0];
 
-			await tick();
-			if (!cpjsData.isShow) {
-				cpjsData.sliceHeight = cpjsEle.scrollHeight;
-			}
-		});
+		// 	await tick();
+		// 	if (!cpjsData.isShow) {
+		// 		cpjsData.sliceHeight = cpjsEle.scrollHeight;
+		// 	}
+		// });
 	});
 </script>
 
-<div class="med-body">
-	<div class="top-banner">
-		<img src="/images/pc/banner_secondary.jpg" alt="常备药头图" />
-	</div>
+<div class="cbyp-med">
+	<div class="detail-box">
+		<div class="overview" class:num={get(voteStore)}>{get(voteStore) ? `目前票数${data.sequence || 0}` : '好评即将开启，敬请期待'}</div>
 
-	<div class="wrap-title">
-		<img src="/images/pc/tl_rank_active.jpg" alt="常备药榜标题" />
-	</div>
+		<div class="img-box">
+			<img class="detail-img" src="/images/meds/{data.imgSrc}" alt={data.name} />
+		</div>
 
-	<div class="meds-inner">
 		{#if data?.id}
-			<div class="meds-content" transition:fade>
-				<div class="med-pic">
-					<i><img src="/images/meds/{data.imgSrc}" alt={data.name} /></i>
-					<div class="btn-vote js-btn-vote hide">为TA好评一票</div>
-					<div class="nov hide">目前票数{data.sequence}</div>
-					<div class="subscribe-box hide" style="display: none;"></div>
-					<div class="btn-detail-vote hide">
-						<p>扫码打开好评</p>
-						<img src="" alt="二维码图片" />
-					</div>
-				</div>
-				<div class="med-detail">
-					<p class="detail-title">{data.name}</p>
-					<div class="box-msg-basic">
-						<p class="productnum">
-							<em class="title">编号</em>
-							<span>{data.id}</span>
-						</p>
-						<p class="bzgg">
-							<em class="title">规格</em>
-							<span>{data.bzgg}</span>
-						</p>
-						<p class="sccs">
-							<em class="title">生产厂商</em>
-							<span>{data.factoryName}</span>
-						</p>
-						<p class="pzwh">
-							<em class="title">批准文号</em>
-							<span>{data.permitNo}</span>
-						</p>
-					</div>
-					<p class="cpjs-top">产品介绍</p>
-					<pre
-						class="cpjs js-cpjs"
-						bind:this={cpjsEle}
-						style:height={cpjsData.isShow
-							? cpjsData.height + 'px'
-							: cpjsData.sliceHeight + 'px'}>{cpjsData.isShow
-							? data.introduction
-							: cpjsData.sliceCont}</pre>
-					{#if cpjsData.sliceCont}
-						<button
-							class="btn-show"
-							on:click={(e) => {
-								const target = e.target;
-								cpjsData.isShow = !cpjsData.isShow;
-							}}
-							>{cpjsData.isShow ? '点击收起' : '点击展开'}<i
-								class="js-cpjs-down"
-								class:on={cpjsData.isShow}
-							></i></button
-						>
-					{/if}
-					<p class="sbly-top">
-						<em class="title">推荐理由</em>
+			<div class="box-inner" transition:fade>
+				<p class="nov hide">目前好评数&ensp;<em>{data.sequence}</em></p>
+				<div class="subscribe-box hide"></div>
+				<p class="name"></p>
+				<div class="box-msg-basic">
+					<p class="productnum">
+						<em class="title">编号</em>
+						<span>{data.id}</span>
 					</p>
-					<pre class="sbly">{data.reason}</pre>
+					<p class="bzgg">
+						<em class="title">规格</em>
+						<span>{data.bzgg}</span>
+					</p>
+					<p class="sccs">
+						<em class="title">生产厂商</em>
+						<span>{data.factoryName}</span>
+					</p>
+					<p class="pzwh">
+						<em class="title">批准文号</em>
+						<span>{data.permitNo}</span>
+					</p>
+				</div>
+
+				<div class="box-cont js-med-cpjs">
+					<em class="title">产品介绍</em>
+					<pre class="cpjs lock"></pre>
+					<button class="down">点击展开</button>
+				</div>
+				
+				<div class="box-cont js-med-sbly">
+					<em class="title">上榜理由</em>
+					<pre class="sbly lock"></pre>
+					<button class="down">点击展开</button>
 				</div>
 			</div>
 		{:else}
 			<Loading message={loadingMsg.msg} visible={loadingMsg.visible} />
-			<NoResult {...resultMsg} />
 		{/if}
+
+		{#if get(voteStore)}
+			<div class="btn-vote">
+				<button class="dovote">为ta好评</button>
+			</div>
+		{:else}
+			<a class="detail-btn-sinup" href="https://img.familydoctor.com.cn/component/channels/cbyp2023/signup">我要报名</a>
+		{/if}
+		
+		<a class="btn-back" {href} on:click|preventDefault={() => history.back()}>返回</a>
+
 	</div>
 </div>
 
-<style lang="scss">
-	/* :global(.loading) {
-    	color: #fff;
-  	} */
-</style>
+<style lang="scss"></style>

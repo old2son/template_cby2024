@@ -1,8 +1,10 @@
 <script>
-    import NavCby from '@src/routes/m/NavCby.svelte';
+    import { get } from 'svelte/store';
+    import { voteStore } from '$lib/stores/voteStore.js';
 	import { contactPerson } from '$lib/data/contactPerson.js';
 	import { medTypeList, dailyTypeList, foodTypeList } from '$lib/data/homeList.js';
 	import { mediaBusiness, mediaNews, mediaNet } from '$lib/data/mediaList.js';
+    import NavCby from '@src/routes/m/NavCby.svelte';
 </script>
 
 <svelte:head>
