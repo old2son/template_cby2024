@@ -75,14 +75,14 @@
 				<div class="meds-box">
 					<div class="med">
 						<div class="med-img-box">
-							<a href="/m/cbyMed/{item.id}"
+							<a href="/m/cbyMed/{item.id}?listId={$page.params.id}"
 								><img src="/images/meds/{item.product.imgSrc}" alt={item.product.name} /></a
 							>
 						</div>
 						<div class="med-info">
 							<a
 								class="name"
-								href="/m/cbyMed/{item.id}"
+								href="/m/cbyMed/{item.id}?listId={$page.params.id}"
 								><p class="name">{item.product.enterpriseName}</p></a
 							>
 							<p class="com">{item.product.factoryName}</p>
@@ -91,7 +91,7 @@
 						<div class="vote-box">
 							<a
 								class="dovote"
-								href="/m/cbyMed/{item.id}"
+								href="/m/cbyMed/{item.id}?listId={$page.params.id}"
 								><i class="icon icon-vote">查看</i></a
 							>
 						</div>

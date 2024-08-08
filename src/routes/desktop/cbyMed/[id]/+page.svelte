@@ -8,8 +8,6 @@
 	import NoResult from '$lib/components/NoResult.svelte';
 	import Loading from '$lib/components/Loading.svelte';
 
-	let isShowIntro = false;
-	let isShowReason = false;
 	let data;
 	let cpjsEle;
 	let cpjsData = {

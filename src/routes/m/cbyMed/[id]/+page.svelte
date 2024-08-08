@@ -7,15 +7,15 @@
 	import { voteStore } from '$lib/stores/voteStore.js';
 	import initMedNav from '$lib/scripts/initMedNav.js';
 	import ensureMedImageExists from '$lib/scripts/ensureMedImageExists.js';
-	import NoResult from '$lib/components/NoResult.svelte';
 	import Loading from '$lib/components/Loading.svelte';
+	import Toast from '$lib/components/Toast.svelte';
 
 	let href = '';
-	let isShowIntro = false;
-	let isShowReason = false;
+	let voteNum = 0;
 	let isVote = true;
 	let data;
 	let cpjsEle;
+	let sblyEle;
 	let cpjsData = {
 		cont: '',
 		sliceCont: '',
@@ -24,10 +24,17 @@
 		isShow: true
 	};
 
-	const resultMsg = {
-		title: '空空如也',
-		time: '人气榜投选即将在11月开启',
-		msg: '敬请期待~'
+	let sblyData = {
+		cont: '',
+		sliceCont: '',
+		height: 'auto',
+		sliceHeight: 'auto',
+		isShow: true
+	};
+
+	const toastMsg = {
+		visible: false,
+		message: '投票成功',
 	};
 
 	const loadingMsg = {
@@ -84,11 +91,17 @@
 		});
 	};
 
+	const Url = new URLSearchParams($page.url.search);
+	href = `${Url.get('listId')}` || '/m/';
+
 	data = med.filter((item) => {
 		return item.id === parseInt($page.params.id, 10);
 	});
 
 	onMount(async () => {
+
+		console.log($page)
+
 		loadingMsg.visible = false;
 		if (!data.length) {
 			return;
@@ -97,6 +110,7 @@
 		initMedNav(data[0]?.campaignBdId || null);
 		data[0].imgSrc = await ensureMedImageExists(data[0].imgSrc);
 		data = data[0];
+		voteNum = data.sequence;
 		// await tick();
 		// textEllipsis('.js-cpjs', 7).then(async (res) => {
 		// 	cpjsData = res[0];
@@ -111,15 +125,17 @@
 
 <div class="cbyp-med">
 	<div class="detail-box">
-		<div class="overview" class:num={get(voteStore)}>{get(voteStore) ? `目前票数${data.sequence || 0}` : '好评即将开启，敬请期待'}</div>
-
-		<div class="img-box">
-			<img class="detail-img" src="/images/meds/{data.imgSrc}" alt={data.name} />
-		</div>
-
 		{#if data?.id}
+			<div class="overview" class:num={get(voteStore)}>
+				{get(voteStore) ? `目前票数${voteNum}` : '好评即将开启，敬请期待'}
+			</div>
+
+			<div class="img-box">
+				<img class="detail-img" src="/images/meds/{data.imgSrc}" alt={data.name} />
+			</div>
+
 			<div class="box-inner" transition:fade>
-				<p class="nov hide">目前好评数&ensp;<em>{data.sequence}</em></p>
+				<p class="nov hide">目前好评数&ensp;<em>{voteNum}</em></p>
 				<div class="subscribe-box hide"></div>
 				<p class="name"></p>
 				<div class="box-msg-basic">
@@ -146,28 +162,73 @@
 					<pre class="cpjs lock"></pre>
 					<button class="down">点击展开</button>
 				</div>
-				
+
 				<div class="box-cont js-med-sbly">
 					<em class="title">上榜理由</em>
 					<pre class="sbly lock"></pre>
 					<button class="down">点击展开</button>
 				</div>
 			</div>
+
+			{#if get(voteStore)}
+				<div class="btn-vote">
+					<button
+						class="dovote"
+						on:click={() => {
+							if (toastMsg.visible) {
+								return;
+							}
+
+							voteNum++;
+							toastMsg.visible = true;
+							setTimeout(() => {
+								toastMsg.visible = false;
+							}, 500);
+						}}>为ta好评</button
+					>
+				</div>
+			{:else}
+				<a
+					class="detail-btn-sinup"
+					href="https://img.familydoctor.com.cn/component/channels/cbyp2023/signup">我要报名</a
+				>
+			{/if}
 		{:else}
 			<Loading message={loadingMsg.msg} visible={loadingMsg.visible} />
-		{/if}
-
-		{#if get(voteStore)}
-			<div class="btn-vote">
-				<button class="dovote">为ta好评</button>
-			</div>
-		{:else}
-			<a class="detail-btn-sinup" href="https://img.familydoctor.com.cn/component/channels/cbyp2023/signup">我要报名</a>
+			<div class:hide={loadingMsg.visible} class="nodata">没有此药品</div>
 		{/if}
 		
-		<a class="btn-back" {href} on:click|preventDefault={() => history.back()}>返回</a>
-
+		<a class="btn-back" {href} transition:slide={{ duration: 200, axis: 'x' }}>返回列表</a>
 	</div>
+
+	<Toast visible={toastMsg.visible} message={toastMsg.message} />
 </div>
 
-<style lang="scss"></style>
+<style lang="scss">
+	.nodata {
+		margin-top: 10rem;
+		overflow: hidden;
+		text-align: center;
+		color: #fff;
+		font-size: 1.3rem;
+	}
+
+	.btn-back {
+		display: block;
+		position: fixed;
+		top: 50%;
+		right: -10rem;
+		height: 2.2rem;
+		line-height: 2.2rem;
+		padding: 0 0.5rem 0 1rem;
+		border-radius: 4rem 0 0 4rem;
+		text-align: center;
+		color: #f7eae1;
+		font-size: 1rem;;
+		background-color: rgba(#060807, 0.7);
+
+		&:active {
+			background-color: rgba(#060807, 0.7);
+		}
+	}
+</style>
