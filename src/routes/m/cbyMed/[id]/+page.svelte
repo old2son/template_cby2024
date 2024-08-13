@@ -5,6 +5,7 @@
 	import { med } from '$lib/data/med.js';
 	import { get } from 'svelte/store';
 	import { voteStore } from '$lib/stores/voteStore.js';
+	import anime from '$lib/utils/anime.js';
 	import initMedNav from '$lib/scripts/initMedNav.js';
 	import ensureMedImageExists from '$lib/scripts/ensureMedImageExists.js';
 	import Loading from '$lib/components/Loading.svelte';
@@ -40,6 +41,25 @@
 	const loadingMsg = {
 		msg: '正在加载药品中',
 		visible: true
+	};
+
+	let btnGoHome;
+	let flag = false;
+	let timeID = null;
+
+	const handler = () => {
+		if (flag) {
+			return;
+		}
+        timeID && clearTimeout(timeID);
+        flag = true;
+		timeID = setTimeout(() => {
+			flag = false;
+			anime({
+				targets: btnGoHome,
+				translateY: window.scrollY + (window.innerHeight / 1.5) + 50
+			});
+		}, 350);
 	};
 
 	const textEllipsis = (eleClassName, num) => {
@@ -99,8 +119,7 @@
 	});
 
 	onMount(async () => {
-
-		console.log($page)
+		handler();
 
 		loadingMsg.visible = false;
 		if (!data.length) {
@@ -159,13 +178,13 @@
 
 				<div class="box-cont js-med-cpjs">
 					<em class="title">产品介绍</em>
-					<pre class="cpjs lock"></pre>
+					<pre class="cpjs lock">{data.introduction}</pre>
 					<button class="down">点击展开</button>
 				</div>
 
 				<div class="box-cont js-med-sbly">
 					<em class="title">上榜理由</em>
-					<pre class="sbly lock"></pre>
+					<pre class="sbly lock">{data.reason}</pre>
 					<button class="down">点击展开</button>
 				</div>
 			</div>
@@ -202,7 +221,9 @@
 	</div>
 
 	<Toast visible={toastMsg.visible} message={toastMsg.message} />
+	<a class="btn-back-home" bind:this={btnGoHome} href="/m">返回列表</a>
 </div>
+<svelte:window on:scroll={handler} />
 
 <style lang="scss">
 	.nodata {
