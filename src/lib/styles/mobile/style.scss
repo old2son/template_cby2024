@@ -1641,6 +1641,10 @@ footer {
     .box-cont {
         margin-bottom: px2rem(25);
 
+        pre {
+            transition: all 0.2s linear;
+        }
+
         button {
             display: block;
             position: relative;
@@ -1674,10 +1678,6 @@ footer {
             }
         }
 
-        .lock {
-            @include duoEllipsis(10);
-        }
-    
         .unlock {
             display: block;
         }

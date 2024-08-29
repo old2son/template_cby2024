@@ -13,7 +13,6 @@
 
 	let href = '';
 	let voteNum = 0;
-	let isVote = true;
 	let data;
 	let cpjsEle;
 	let sblyEle;
@@ -35,7 +34,7 @@
 
 	const toastMsg = {
 		visible: false,
-		message: '投票成功',
+		message: '投票成功'
 	};
 
 	const loadingMsg = {
@@ -51,13 +50,13 @@
 		if (flag) {
 			return;
 		}
-        timeID && clearTimeout(timeID);
-        flag = true;
+		timeID && clearTimeout(timeID);
+		flag = true;
 		timeID = setTimeout(() => {
 			flag = false;
 			anime({
 				targets: btnGoHome,
-				translateY: window.scrollY + (window.innerHeight / 1.5) + 50
+				translateY: window.scrollY + window.innerHeight / 1.5 + 50
 			});
 		}, 350);
 	};
@@ -130,17 +129,30 @@
 		data[0].imgSrc = await ensureMedImageExists(data[0].imgSrc);
 		data = data[0];
 		voteNum = data.sequence;
-		// await tick();
-		// textEllipsis('.js-cpjs', 7).then(async (res) => {
-		// 	cpjsData = res[0];
+		await tick();
+		textEllipsis('.js-med-cpjs', 7).then(async (res) => {
+			cpjsData = res[0];
 
-		// 	await tick();
-		// 	if (!cpjsData.isShow) {
-		// 		cpjsData.sliceHeight = cpjsEle.scrollHeight;
-		// 	}
-		// });
+			await tick();
+			if (!cpjsData.isShow) {
+				cpjsData.sliceHeight = cpjsEle.scrollHeight;
+			}
+		});
+
+		textEllipsis('.js-med-sbly', 7).then(async (res) => {
+			sblyData = res[0];
+
+			await tick();
+			if (!sblyData.isShow) {
+				sblyData.sliceHeight = sblyEle.scrollHeight;
+			}
+		});
 	});
 </script>
+
+<svelte:head>
+	<title>常备药-{data?.name}</title>
+</svelte:head>
 
 <div class="cbyp-med">
 	<div class="detail-box">
@@ -176,16 +188,43 @@
 					</p>
 				</div>
 
-				<div class="box-cont js-med-cpjs">
+				<div class="box-cont">
 					<em class="title">产品介绍</em>
-					<pre class="cpjs lock">{data.introduction}</pre>
-					<button class="down">点击展开</button>
+					<pre
+						class="cpjs js-med-cpjs"
+						bind:this={cpjsEle}
+						style:height={cpjsData.isShow
+							? cpjsData.height + 'px'
+							: cpjsData.sliceHeight + 'px'}>{cpjsData.isShow
+							? data.introduction
+							: cpjsData.sliceCont}</pre>
+
+					<button
+						class:down={!cpjsData.isShow}
+						on:click={(e) => {
+							const target = e.target;
+							cpjsData.isShow = !cpjsData.isShow;
+						}}>{cpjsData.isShow ? '点击收起' : '点击展开'}</button
+					>
 				</div>
 
-				<div class="box-cont js-med-sbly">
+				<div class="box-cont">
 					<em class="title">上榜理由</em>
-					<pre class="sbly lock">{data.reason}</pre>
-					<button class="down">点击展开</button>
+					<pre
+						class="sbly js-med-sbly"
+						bind:this={sblyEle}
+						style:height={sblyData.isShow
+							? sblyData.height + 'px'
+							: sblyData.sliceHeight + 'px'}>{sblyData.isShow
+							? data.reason
+							: sblyData.sliceCont}</pre>
+					<button
+						class:down={!sblyData.isShow}
+						on:click={(e) => {
+							const target = e.target;
+							sblyData.isShow = !sblyData.isShow;
+						}}>{sblyData.isShow ? '点击收起' : '点击展开'}</button
+					>
 				</div>
 			</div>
 
@@ -207,16 +246,13 @@
 					>
 				</div>
 			{:else}
-				<a
-					class="detail-btn-sinup"
-					href="https://img.familydoctor.com.cn/component/channels/cbyp2023/signup">我要报名</a
-				>
+				<a class="detail-btn-sinup" href="m/signup">我要报名</a>
 			{/if}
 		{:else}
 			<Loading message={loadingMsg.msg} visible={loadingMsg.visible} />
 			<div class:hide={loadingMsg.visible} class="nodata">没有此药品</div>
 		{/if}
-		
+
 		<a class="btn-back" {href} transition:slide={{ duration: 200, axis: 'x' }}>返回列表</a>
 	</div>
 
@@ -245,7 +281,7 @@
 		border-radius: 4rem 0 0 4rem;
 		text-align: center;
 		color: #f7eae1;
-		font-size: 1rem;;
+		font-size: 1rem;
 		background-color: rgba(#060807, 0.7);
 
 		&:active {
