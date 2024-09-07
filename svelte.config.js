@@ -27,6 +27,10 @@ const config = {
 				console.error(`Error: ${status} on ${path}`);
 			}
 		}
+	},
+	compilerOptions: {
+		// disable all warnings coming from node_modules and all accessibility warnings in the ⚠️svelte5⚠️
+		// warningFilter: (warning) => !warning.filename?.includes('node_modules') && !warning.code.startsWith('a11y')
 	}
 };
 

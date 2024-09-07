@@ -165,8 +165,14 @@
 					<div class="info-bottom-item-wrap">
 						<div class="tl-bd">榜单类型</div>
 						<label for="ranklist">
-							<i>请选择榜单类型</i>
-							<input name="ranklist" class="js-input-ranklist" type="text" value="" readonly />
+							<button
+								on:click={() => {
+									isShowRankType = !isShowRankType;
+								}}
+							>
+								<i>请选择榜单类型</i>
+								<input name="ranklist" class="js-input-ranklist" type="text" value="" readonly />
+							</button>
 						</label>
 					</div>
 
@@ -187,12 +193,14 @@
 		</div>
 	</div>
 
-	<div class="common-mask js-mask hide"></div>
-	<div class="signup-picker-wrap js-picker-bd hide">
+	<div class="common-mask js-mask" class:hide={!isShowRankType || !isShowStuff}></div>
+	<div class="signup-picker-wrap js-picker-bd" class:hide={!isShowRankType}>
 		<dl>
 			<dt>请选择榜单类型</dt>
 			<dd class="btn-confirm js-confirm">确认</dd>
-			<dd class="js-cancel">取消</dd>
+			<dd class="js-cancel">
+				<button on:click={() => (isShowRankType = !isShowRankType)}>取消</button>
+			</dd>
 		</dl>
 		<ul class="js-list">
 			<li data-id="68">家庭常备药上榜品牌</li>
@@ -201,32 +209,31 @@
 		</ul>
 	</div>
 
-    {#if isShowStuff && stuffList.length > 0}
-        <div class="signup-picker-wrap js-picker-stuff" transition:slide={{ duration: 250 }}>
-            <dl>
-                <dt>请选择榜单分类</dt>
-                <dd class="btn-confirm js-confirm">确认</dd>
-                <dd class="js-cancel">取消</dd>
-            </dl>
+	{#if isShowStuff && stuffList.length > 0}
+		<div class="signup-picker-wrap js-picker-stuff" transition:slide={{ duration: 250 }}>
+			<dl>
+				<dt>请选择榜单分类</dt>
+				<dd class="btn-confirm js-confirm">确认</dd>
+				<dd class="js-cancel">取消</dd>
+			</dl>
 
-            <ul class="js-picker-stuff" transition:slide={{ duration: 250 }}>
-                {#each stuffList as item}
-                    <li >
-                        <button
-                            data-id={item.id}
-                            class:on={item.id === stuffId}
-                            on:click={() => {
-                                isShowStuff = !isShowStuff;
-                                stuffId = item.id;
-                                stuffCont = item.name
-                            }}>{item.name}</button
-                        >
-                    </li>
-                {/each}
-            </ul>
-        </div>
-    {/if}
-	
+			<ul class="js-picker-stuff" transition:slide={{ duration: 250 }}>
+				{#each stuffList as item}
+					<li>
+						<button
+							data-id={item.id}
+							class:on={item.id === stuffId}
+							on:click={() => {
+								isShowStuff = !isShowStuff;
+								stuffId = item.id;
+								stuffCont = item.name;
+							}}>{item.name}</button
+						>
+					</li>
+				{/each}
+			</ul>
+		</div>
+	{/if}
 
 	<GoHome />
 </div>
