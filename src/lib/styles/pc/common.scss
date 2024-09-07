@@ -147,50 +147,7 @@ a:hover {
 a:active {
 	background: none;
 }
-.red {
-	color: #c00 !important;
-}
-.blue {
-	color: blue !important;
-}
-.green {
-	color: green !important;
-}
-.gray {
-	color: gray !important;
-}
-.orange {
-	color: orange !important;
-}
-.yellow {
-	color: #ff0 !important;
-}
-.lfloat {
-	float: left;
-}
-.rfloat {
-	float: right;
-}
-.clear {
-	clear: both;
-}
-.clearfix {
-	display: block;
-	*zoom: 1;
-}
-.clearfix:after {
-	content: '.';
-	display: block;
-	height: 0;
-	clear: both;
-	visibility: hidden;
-}
-.songti {
-	font-family: 'simson';
-}
-.bold {
-	font-weight: bold;
-}
+
 .mt0 {
 	margin-top: 0px !important;
 }

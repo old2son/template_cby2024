@@ -13,8 +13,9 @@
 	<script>
 		(function fontResize() {
 			const isMobile = /iPhone|iPod|Android|ios|symbian|rv:1.2.3.4|ucweb|Windows Phone/i.test(navigator.userAgent);
-
-			if (!isMobile) {
+			const url = location.href;
+			
+			if (!isMobile && !url.includes('/m/')) {
 				return;
 			}
 

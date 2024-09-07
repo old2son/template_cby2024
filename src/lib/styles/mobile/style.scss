@@ -78,7 +78,7 @@ body {
     label {
         font-size: px2rem(28);
         color: #4c4c4c;
-        font-weight: bold;
+        font-weight: 700;
     }
 
     .checkIn-info div {
@@ -104,7 +104,7 @@ body {
     .top-text {
         color: #104037;
         text-align: center;
-        font-weight: bold;
+        font-weight: 700;
         font-size: px2rem(32);
     }
 }
@@ -156,7 +156,7 @@ body {
         position: relative;
         margin-bottom: px2rem(8);
         color: #fedcb9;
-        font-weight: bold;
+        font-weight: 700;
         font-size: px2rem(30);
 
         i {
@@ -323,7 +323,7 @@ body {
         line-height: px2rem(64);
         padding-left: px2rem(37);
         color: #fedcb9;
-        font-weight: bold;
+        font-weight: 700;
         font-size: px2rem(27);
         background: url(/images/mobile/icon_star.png) no-repeat left center;
         background-size: px2rem(27);
@@ -503,7 +503,7 @@ body {
         border: 0;
         outline: 0;
         color: #362e2b;
-        font-weight: bold;
+        font-weight: 700;
         font-size: px2rem(34);
         background: url(/images/mobile/bg_btn_signup.jpg) no-repeat center;
         background-size: 100%;
@@ -650,7 +650,7 @@ body {
 
         &.on {
             color: #fedcb9;
-            font-weight: bold;
+            font-weight: 700;
             font-size: px2rem(32);
 
             &::before  {
@@ -1143,7 +1143,7 @@ body {
 
     h2 {
         color: #f7eae1;
-        font-weight: bold;
+        font-weight: 700;
         font-size: px2rem(34);
     }
 }
@@ -1214,7 +1214,7 @@ body {
             display: inline-block;
             position: relative;
             color: #fedcb9;
-            font-weight: bold;
+            font-weight: 700;
             font-size: px2rem(30);
     
             i {
@@ -1337,24 +1337,25 @@ footer {
         }
 
         .btn-clear {
-            display: inline-block;
+            display: block;
             height: px2rem(80);
             line-height: px2rem(80);
             width: px2rem(32);
+            margin-right: px2rem(20);
             background: url(/images/mobile/icon_clear.png) center no-repeat;
             background-size: 100%;
         }
 
         input[type=submit],
         button {
-            border: 0;
-            outline: 0;
             width: px2rem(128);
             height: 100%;
-            float: right;
             margin-left: px2rem(27);
+            float: right;
+            border: 0;
+            outline: 0;
             font-size: px2rem(30);
-            font-weight: bold;
+            font-weight: 700;
             color: #330000;
             background: url(/images/mobile/btn_search.png) center no-repeat ;
             background-size: 100%;
@@ -1420,7 +1421,7 @@ footer {
             .name {
                 max-width: px2rem(350);
                 color: #fedcb9;
-                font-weight: bold;
+                font-weight: 700;
                 font-size: px2rem(27);
             }
 
@@ -1439,7 +1440,7 @@ footer {
 
             .nov {
                 font-size: px2rem(27);
-                font-weight: bolder;
+                font-weight: 500;
                 @include ellipsis();
             }
         }
@@ -1591,7 +1592,7 @@ footer {
             margin-right: px2rem(15);
             float: left;
             color: #fedcb9;
-            font-weight: bold;
+            font-weight: 700;
             font-size: px2rem(27);
         }
 
@@ -1633,7 +1634,7 @@ footer {
     .name {
         margin-bottom: px2rem(30);
         color: #f7eae1;
-        font-weight: bold;
+        font-weight: 700;
         font-size: px2rem(34);
         @extend .common-tl-sm;
     }
@@ -1685,7 +1686,7 @@ footer {
         .title {
             display: block;
             color: #fedcb9;
-            font-weight: bold;
+            font-weight: 700;
             font-size: px2rem(27);
         }
     }
@@ -1805,7 +1806,7 @@ footer {
 
     .rank {
         font-size: px2rem(44);
-        font-weight: bold;
+        font-weight: 700;
         font-style: italic;
         color: #448871;
 
@@ -1940,7 +1941,7 @@ footer {
             font-size: px2rem(30);
             color: #4c4c4c;
             em {color: #175347;}
-            .award {font-weight: bold;}
+            .award {font-weight: 700;}
         }
         p {margin-bottom: px2rem(30);&:nth-last-of-type(1){margin-bottom: 0;}}
     }
