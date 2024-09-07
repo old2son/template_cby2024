@@ -213,11 +213,12 @@ textarea {
 	font-size: 100%;
 	margin: 0;
 	vertical-align: baseline;
-	*vertical-align: middle;
 }
 button,
 input {
-	*overflow: visible;
+	border: 0;
+	outline: 0;
+	background-color: transparent;
 }
 button,
 select {
@@ -357,14 +358,7 @@ i {
 input[type='button'] {
 	border: 0;
 }
-.clear {
-	clear: both;
-}
-.clear:after {
-	display: table;
-	content: '';
-	clear: both;
-}
+
 .fl {
 	float: left;
 }
@@ -373,8 +367,4 @@ input[type='button'] {
 }
 .hide {
 	display: none !important;
-}
-
-.container {
-	overflow: hidden;
 }

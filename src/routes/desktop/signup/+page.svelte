@@ -22,16 +22,15 @@
 	};
 
 	const getStuffList = (rankId) => {
+		stuffId = 0;
+		stuffCont = '请选择分类';
 		if (rankId === 68) {
 			return sinupMedList68;
-		} 
-		else if (rankId === 69) {
+		} else if (rankId === 69) {
 			return sinupMedList69;
-		} 
-		else if (rankId === 71) {
+		} else if (rankId === 71) {
 			return sinupMedList71;
-		} 
-		else {
+		} else {
 			return [];
 		}
 	};
@@ -50,26 +49,19 @@
 	function validate(data) {
 		if (!data.name.trim()) {
 			toastProps.message = '请输入公司名称';
-		}
-		else if (!data.contactPerson.trim()) {
+		} else if (!data.contactPerson.trim()) {
 			toastProps.message = '请输入联系人';
-		}
-		else if (!data.phone.trim()) {
+		} else if (!data.phone.trim()) {
 			toastProps.message = '请输入联系电话';
-		}
-		else if (!data.email.trim()) {
+		} else if (!data.email.trim()) {
 			toastProps.message = '请输入邮箱';
-		}
-		else if (!data.remark.trim()) {
+		} else if (!data.remark.trim()) {
 			toastProps.message = '请输入备注';
-		}
-		else if (!data.rankId) {
+		} else if (!data.rankId) {
 			toastProps.message = '请选择榜单类型';
-		}
-		else if (!data.stuffId) {
+		} else if (!data.stuffId) {
 			toastProps.message = '请选择分类';
-		}
-		else {
+		} else {
 			toastProps.message = '提交成功';
 		}
 	}
@@ -94,7 +86,7 @@
 					<h2>公司信息</h2>
 				</div>
 				<div class="info-wrap">
-					<div class="clear clearfix">
+					<div class="item-wrap">
 						<label for="company">
 							<i class="company-icon">公司名称 *</i>
 						</label>
@@ -106,7 +98,7 @@
 							bind:value={name}
 						/>
 					</div>
-					<div class="clear clearfix">
+					<div class="item-wrap">
 						<label for="person">
 							<i class="person-icon">联系人 *</i>
 						</label>
@@ -118,7 +110,7 @@
 							bind:value={contactPerson}
 						/>
 					</div>
-					<div class="clear clearfix">
+					<div class="item-wrap">
 						<label for="contact">
 							<i class="phone-icon">联系方式 *</i>
 						</label>
@@ -131,7 +123,7 @@
 							bind:value={phone}
 						/>
 					</div>
-					<div class="clear clearfix">
+					<div class="item-wrap">
 						<label for="mail">
 							<i class="mail-icon">邮箱 *</i>
 						</label>
@@ -176,9 +168,9 @@
 								<input
 									name="ranklist"
 									class="js-input-ranklist"
-									data-id={rankId}
 									type="hidden"
 									readonly
+									data-id={rankId}
 								/>
 							</label>
 						</button>
@@ -207,6 +199,10 @@
 						<button
 							class="btn-stufflist"
 							on:click={() => {
+								if (toastProps.visible) {
+									return;
+								}
+
 								if (!rankId) {
 									toastProps.message = '未选择榜单类型';
 									toastProps.visible = true;
@@ -239,7 +235,7 @@
 											on:click={() => {
 												isShowStuff = !isShowStuff;
 												stuffId = item.id;
-												stuffCont = item.name
+												stuffCont = item.name;
 											}}>{item.name}</button
 										>
 									</li>
@@ -257,6 +253,7 @@
 		class="common-btn-light"
 		id="js-submit"
 		on:click={() => {
+			console.log(submitData);
 			if (toastProps.visible) {
 				return;
 			}
@@ -267,7 +264,7 @@
 			}, 2000);
 		}}>提交报名</button
 	>
-	<Toast {...toastProps}/>
+	<Toast {...toastProps} />
 </div>
 
 <style lang="scss">
