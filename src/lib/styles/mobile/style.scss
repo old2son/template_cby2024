@@ -522,10 +522,6 @@ body {
     color: #f7eae1;
     font-size: px2rem(27);
     background-color: rgba(#060807, 0.7);
-
-    &:active {
-        background-color: rgba(#060807, 0.7);
-    }
 }
 
 .btn-signup {
@@ -886,7 +882,6 @@ body {
         &.on {
             dt {
                 height: px2rem(200);
-                overflow: hidden;
             }
 
             .expand-hd {
@@ -913,6 +908,7 @@ body {
             height: px2rem(525);
             padding: 0 px2rem(28);
             margin: 0 auto px2rem(15);
+            overflow: hidden;
             text-align: justify;
             text-indent: 2em;
             transition: height 0.2s linear;
@@ -927,7 +923,6 @@ body {
         dd {
             position: relative; // 不加定位被子元素影响过渡
             padding: 0 px2rem(28) px2rem(35);
-            background-color: #113328;
         }
     
         h2 {

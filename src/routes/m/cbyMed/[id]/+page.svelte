@@ -45,7 +45,6 @@
 	let btnGoHome;
 	let flag = false;
 	let timeID = null;
-
 	const handler = () => {
 		if (flag) {
 			return;
@@ -111,7 +110,7 @@
 	};
 
 	const Url = new URLSearchParams($page.url.search);
-	href = `${Url.get('listId')}` || '/m/';
+	href = `/m/cbyList/${Url.get('listId')}` || '/m/';
 
 	data = med.filter((item) => {
 		return item.id === parseInt($page.params.id, 10);
@@ -246,18 +245,16 @@
 					>
 				</div>
 			{:else}
-				<a class="detail-btn-sinup" href="m/signup">我要报名</a>
+				<a class="detail-btn-sinup" href="/m/signup/">我要报名</a>
 			{/if}
 		{:else}
 			<Loading message={loadingMsg.msg} visible={loadingMsg.visible} />
 			<div class:hide={loadingMsg.visible} class="nodata">没有此药品</div>
 		{/if}
-
-		<a class="btn-back" {href} transition:slide={{ duration: 200, axis: 'x' }}>返回列表</a>
 	</div>
 
 	<Toast visible={toastMsg.visible} message={toastMsg.message} />
-	<a class="btn-back-home" bind:this={btnGoHome} href="/m">返回列表</a>
+	<a class="btn-back-home" bind:this={btnGoHome} {href}>返回列表</a>
 </div>
 <svelte:window on:scroll={handler} />
 
@@ -268,24 +265,5 @@
 		text-align: center;
 		color: #fff;
 		font-size: 1.3rem;
-	}
-
-	.btn-back {
-		display: block;
-		position: fixed;
-		top: 50%;
-		right: -10rem;
-		height: 2.2rem;
-		line-height: 2.2rem;
-		padding: 0 0.5rem 0 1rem;
-		border-radius: 4rem 0 0 4rem;
-		text-align: center;
-		color: #f7eae1;
-		font-size: 1rem;
-		background-color: rgba(#060807, 0.7);
-
-		&:active {
-			background-color: rgba(#060807, 0.7);
-		}
 	}
 </style>
