@@ -4,6 +4,7 @@
 	import NoResult from '$lib/components/NoResult.svelte';
 	import Loading from '$lib/components/Loading.svelte';
 	import GoHome from '@src/routes/m/GoHome.svelte';
+	import Image from '@src/routes/m/rank/Image.svelte';
 
 	const NoResultMsg = {
 		title: '空空如也',
@@ -38,17 +39,18 @@
 		</div>
 		<div class="rank-list">
 			{#each rankList as item, index}
-				<a class="rank-item" href="m/cbyMed/{item.id}"
+				<a class="rank-item" href="/m/cbyMed/{item.id}"
 					><div
 						class="rank"
 						class:first={(index + 1) === 1}
 						class:second={(index + 1) === 2}
 						class:third={(index + 1) === 3}
 					>
-						{index}
+						{index + 1}
 					</div>
 					<div class="avatar">
-						<img src="/images/meds/{item.imgSrc}" alt={item.name} />
+						<!-- <img src="/images/meds/{item.imgSrc}" alt={item.name} /> -->
+						<Image imgSrc={item.imgSrc} name={item.name}/>
 					</div>
 					<div class="number">{item.id}</div>
 					<div class="name">{item.name}</div>
