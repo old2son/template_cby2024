@@ -83,7 +83,7 @@
 
 	// 点击点亮
 	const scrollFn = (e) => {
-		if ($page.url.pathname === '/m') {
+		if ($page.url.pathname === '/m/') {
 			e.preventDefault();
 		}
 
