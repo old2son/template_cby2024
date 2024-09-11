@@ -110,7 +110,7 @@
 	};
 
 	const Url = new URLSearchParams($page.url.search);
-	href = `/m/cbyList/${Url.get('listId')}` || '/m/';
+	href = Url.get('listId') ? `/m/cbyList/${Url.get('listId')}` : '/m/';
 
 	data = med.filter((item) => {
 		return item.id === parseInt($page.params.id, 10);
@@ -254,7 +254,7 @@
 	</div>
 
 	<Toast visible={toastMsg.visible} message={toastMsg.message} />
-	<a class="btn-back-home" bind:this={btnGoHome} {href}>返回列表</a>
+	<a class="btn-back-home" bind:this={btnGoHome} {href}>{Url.get('listId') ? '返回列表' : '返回首页'}</a>
 </div>
 <svelte:window on:scroll={handler} />
 
