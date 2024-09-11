@@ -157,7 +157,8 @@
 		top = 0;
 		navItems = document.querySelectorAll('.js-nav-item');
 	
-		if ($page.url.pathname === '/desktop') {
+		console.log($page)
+		if ($page.url.pathname === '/desktop/') {
 			replaceUrl(urlData);
 			onceScroll();
 			handler();
