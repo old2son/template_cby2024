@@ -7,7 +7,6 @@
 	import GoHome from '@src/routes/m/GoHome.svelte';
 	import Image from '@src/routes/m/rank/Image.svelte';
 
-	let rank = null;
 	let orginData = [];
 	let listData = [];
 	let searchCont = '';
@@ -107,7 +106,7 @@
 	</h2>
 
 	{#if listData.length}
-		<div class="rank-wrap" bind:this={rank}>
+		<div class="rank-wrap">
 			<div class="rank-th">
 				<div class="tr rank">排名</div>
 				<div class="tr avatar">头像</div>
