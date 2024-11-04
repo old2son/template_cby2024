@@ -49,19 +49,26 @@
 	function validate(data) {
 		if (!data.name.trim()) {
 			toastProps.message = '请输入公司名称';
-		} else if (!data.contactPerson.trim()) {
+		} 
+		else if (!data.contactPerson.trim()) {
 			toastProps.message = '请输入联系人';
-		} else if (!data.phone.trim()) {
+		} 
+		else if (!data.phone.trim()) {
 			toastProps.message = '请输入联系电话';
-		} else if (!data.email.trim()) {
+		} 
+		else if (!data.email.trim()) {
 			toastProps.message = '请输入邮箱';
-		} else if (!data.remark.trim()) {
+		} 
+		else if (!data.remark.trim()) {
 			toastProps.message = '请输入备注';
-		} else if (!data.rankId) {
+		} 
+		else if (!data.rankId) {
 			toastProps.message = '请选择榜单类型';
-		} else if (!data.stuffId) {
+		} 
+		else if (!data.stuffId) {
 			toastProps.message = '请选择分类';
-		} else {
+		} 
+		else {
 			toastProps.message = '提交成功';
 		}
 	}

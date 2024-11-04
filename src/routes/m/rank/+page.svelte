@@ -1,4 +1,5 @@
 <script>
+	import Toast from '@src/lib/components/Toast.svelte';
 	import { onMount } from 'svelte';
 	import rankList from '$lib/data/rankList.js';
 	import NoResult from '$lib/components/NoResult.svelte';
@@ -6,6 +7,7 @@
 	import GoHome from '@src/routes/m/GoHome.svelte';
 	import Image from '@src/routes/m/rank/Image.svelte';
 
+	let rank = null;
 	let orginData = [];
 	let listData = [];
 	let searchCont = '';
@@ -19,13 +21,21 @@
 		msg: '敬请期待~'
 	};
 
+	const toastProps = {
+		message: '',
+		visible: false
+	};
+
 	const loadingMsg = {
 		msg: '正在加载列表中',
 		visible: true
 	};
 
 	const loadMore = () => {
-		if (allLoaded) return;
+		if (allLoaded) {
+			return
+		};
+
 		const start = (page - 1) * size;
 		const end = start + size;
 		const newItems = orginData.slice(start, end);
@@ -33,14 +43,20 @@
 		if (newItems.length > 0) {
 			listData = [...listData, ...newItems];
 			page++;
-		} else {
+		} 
+		else {
 			allLoaded = true;
+			toastProps.message = '没有更多数据了';
+			toastProps.visible = true;
+			setTimeout(() => {
+				toastProps.visible = false;
+			}, 2000);
 			window.removeEventListener('scroll', handleScroll);
 		}
 	};
 
 	const handleScroll = () => {
-		if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 100) {
+		if (window.innerHeight + window.scrollY >= document.body.scrollHeight) {
 			loadMore();
 		}
 	};
@@ -91,7 +107,7 @@
 	</h2>
 
 	{#if listData.length}
-		<div class="rank-wrap">
+		<div class="rank-wrap" bind:this={rank}>
 			<div class="rank-th">
 				<div class="tr rank">排名</div>
 				<div class="tr avatar">头像</div>
@@ -126,4 +142,5 @@
 	{/if}
 
 	<GoHome />
+	<Toast {...toastProps} />
 </div>

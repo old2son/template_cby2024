@@ -18,10 +18,10 @@
 		top: 50%;
 		left: 50%;
 		z-index: 10;
-		padding: 10px 20px;
-		border-radius: 5px;
+		padding: 0.8rem 1.2rem;
+		border-radius: 0.5rem;
 		transform: translate(-50%, -50%);
-		font-size: 22px;
+		font-size: 1rem;
 		font-weight: 400;
 		color: #fff;
 		background-color: rgba(0, 0, 0, 0.9);
